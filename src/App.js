@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Nav from './components/Nav';
+import styled from 'styled-components';
 
+const Input = styled.input.attrs(({size}) => ({
+  type: "text",
+  fontSize: size || "2em"
+}))`
+font-size: ${props => props.fontSize};
+`
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Nav />
+        <h1>Neuro&shy;Fabrication</h1>
+        <Input size="1em"/>
+        <Input />
       </div>
     );
   }

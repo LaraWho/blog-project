@@ -3,7 +3,10 @@ import styled from 'styled-components';
 
 const Nav = () => {
   const Wrapper = styled.div`
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-family: 'Montserrat Alternates', sans-serif; */
+    font-family: 'Amatic SC', sans-serif;
+    letter-spacing: 2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,17 +25,17 @@ const Nav = () => {
     cursor: pointer;
     color: ${props => props.logoColor || '#aba7a7'};
     width: 40vw;
-    font-size: 1.5em;
-    transition: all .5s ease; 
-
+    font-size: 1.75em;
+    transition: all .5s ease;
     :hover {
       color: #6d6c6c;
     }
   `
 
   const Button = styled(Header)`
-    font-size: 1.25em;
+    font-size: 1.5em;
     width: unset;
+    font-weight: 700;
   `
 
   return (

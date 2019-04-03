@@ -9,12 +9,19 @@ const Input = styled.input.attrs(({size}) => ({
 }))`
 font-size: ${props => props.fontSize};
 `
+const Title = styled.h1`
+  /* font-family: 'Montserrat Alternates', sans-serif; */
+  font-family: 'Amatic SC', sans-serif;
+  color: #333;
+  letter-spacing: 2px;
+  font-size: 3em;
+`
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Nav />
-        <h1>Neuro&shy;Fabrication</h1>
+        <Title>Neuro&shy;Fabrication</Title>
         <Input size="1em"/>
         <Input />
       </div>

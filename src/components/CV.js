@@ -13,7 +13,7 @@ const CV = () => {
   const SubTitle = styled.h2`
     text-align: left;
     font-size: 2.5em;
-    color: #6d6c6c;
+    color: #585858;
     margin-bottom: 0;
     :nth-of-type(1) {
       text-align: center;
@@ -21,6 +21,7 @@ const CV = () => {
   `
 
   const BodyText = styled.p`
+    color: #585858;
     text-align: left;
     :nth-of-type(1) {
       text-align: center;

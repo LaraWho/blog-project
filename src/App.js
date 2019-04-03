@@ -8,6 +8,9 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
 const GlobalScope = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
   body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
@@ -19,10 +22,10 @@ const GlobalScope = createGlobalStyle`
     font-family: 'Amatic SC', sans-serif;
   }
 `
-
 const AppWrapper = styled.div`
   text-align: center;
 `
+
 class App extends Component {
 
   render() {

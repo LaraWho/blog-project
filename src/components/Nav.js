@@ -14,37 +14,48 @@ const Nav = (props) => {
     box-shadow: 0 1px 2px #6d6c6c;
     height: 8vh;
     width: 100vw;
+    overflow-x: hidden;
     `
   const NavButtons = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 50vw;
+    width: 60vw;
+    @media (min-width: 600px) {
+      width: 50vw;
+    }
     `
   const Header = styled.h1`
     cursor: pointer;
     color: ${props => props.logoColor || '#aba7a7'};
     width: 40vw;
-    font-size: 1.75em;
+    font-size: 1.5em;
     text-align: center;
     transition: all .5s ease;
     :hover {
-      color: #6d6c6c;
+      /* color: #6d6c6c; */
+      opacity: 0.5;
+    }
+    @media (min-width: 380px) {
+      font-size: 1.75em;
     }
   `
   const Button = styled(Header)`
-    font-size: 1.5em;
+    font-size: 1.25em;
     width: unset;
     text-decoration: none;
     font-weight: 700;
+    @media (min-width: 380px) {
+      font-size: 1.5em;
+    }
   `
   return (
     <Wrapper>
       <Header logoColor="#d8d8d8" onClick={() => props.history.push('/')}><i className="fas fa-flask" style={{marginRight: "10px"}}></i>Just Geoff</Header>
       <NavButtons>
+        <Button>Articles</Button>
         <Button onClick={() => props.history.push('/about')}>About</Button>
         <Button onClick={() => props.history.push('/cv')}>CV</Button>
-        <Button onClick={() => props.history.push('/login')}>Login</Button>
       </NavButtons>
     </Wrapper>
   );

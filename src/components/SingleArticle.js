@@ -15,23 +15,20 @@ const ArticleHeader = styled.h1`
   color: #FFF;
   width: 100vw;
 `
-const ArticleImage = styled.div`
+const ArticleImage = styled.img`
   width: 100vw;
-  height: 50vh;
-  background-position: center;
-  background-size: cover;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
 `
-const ArticleContent = styled.p`
+const ArticleContent = styled.div`
   width: 80vw;
   margin: 2em auto;
-  :nth-of-type(1) {
-    text-align: right;
-    margin: 1em auto;
-  }
+  text-align: left;
+`
+const ArticleSubTitle = styled.h2`
+  width: 80vw;
+  text-align: left;
+  margin: 20px auto 0 auto;
+  font-size: 1.5em;
 `
 class SingleArticle extends Component {
 
@@ -40,12 +37,13 @@ class SingleArticle extends Component {
     const article = this.props.articles.find(el => {
       return el._id === id
     })
+    
     return (
       <SingleArticleWrapper >
-        <ArticleImage style={{backgroundImage: `url(${article.imageURL})`}}>
-          <ArticleHeader>{article.title}</ArticleHeader>
-        </ArticleImage>
-        <ArticleContent>Posted {moment(article.date).calendar()}</ArticleContent>
+        <ArticleHeader>{article.title}</ArticleHeader>
+        <ArticleImage src={article.imageURL}/>
+        <ArticleSubTitle as="a" href={article.link} target="_blank">Link to published article</ArticleSubTitle>
+        <ArticleSubTitle>Published {moment(article.date).format('Do MMMM YYYY')}</ArticleSubTitle>
         <ArticleContent>{article.content}</ArticleContent>
       </SingleArticleWrapper>
     );

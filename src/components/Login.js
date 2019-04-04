@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { withState } from '../MyState';
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -10,21 +11,7 @@ const LoginWrapper = styled.div`
   margin: auto;
 `
 const LoginInput = styled.input`
-  font-family: 'Open Sans', sans-serif;
-  padding: 0.75em;
-  margin: 1em;
-  width: 80vw;
-  font-size: 1em;
   margin-top: 0;
-  border: 2px solid #d8d8d8;
-  transition: border .5s ease;
-  :focus {
-    border: 2px solid #aba7a7;
-    outline: none;
-  }
-  @media (min-width: 600px) {
-    width: 60vw;
-  }
 `
 const InputText = styled.h2`
   text-align: left;
@@ -55,6 +42,11 @@ const LoginTitle = styled.h1`
 `
 class Login extends Component {
 
+  login = () => {
+    this.props.history.push('/add')
+    this.props.login()
+  }
+
   render() {
     return (
       <LoginWrapper>
@@ -62,11 +54,11 @@ class Login extends Component {
         <InputText>Email</InputText>
         <LoginInput ></LoginInput>
         <InputText>Password</InputText>
-        <LoginInput ></LoginInput>
-        <LoginBtn>Login</LoginBtn>
+        <LoginInput></LoginInput>
+        <LoginBtn onClick={this.login}>Login</LoginBtn>
       </LoginWrapper>
     );
   }
 }
 
-export default Login;
+export default withState(Login);

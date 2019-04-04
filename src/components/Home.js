@@ -11,13 +11,13 @@ const Brain = styled.img`
   width: 50vw;
   margin-top: 1em;
   @media (min-width: 450px) {
-    margin-top: 2em;
+    margin-top: 0.5em;
   }
   @media (min-width: 600px) {
-    width: 40vw;   
+    width: 35vw;   
   }
-  @media (min-width: 1100px) {
-    width: 25vw;
+  @media (min-width: 980px) {
+    width: 30vw;
   }
 `
 const Title = styled.h1`
@@ -36,9 +36,9 @@ const SubTitle = styled.h2.attrs(({size, color, margin}) => ({
   margin: ${props => props.margin};
   font-size: ${props => props.fontSize};
   color: ${props => props.color};
-  @media (min-width: 380px) {
+  /* @media (min-width: 380px) {
       font-size: 2.5em;
-    }
+    } */
 `
 const LoginBtn = styled.h2`
   cursor: pointer;
@@ -53,9 +53,9 @@ class Home extends Component {
     return (
       <HomeWrapper>
         <Brain src={brain} alt="brain"/>
-        <Title>Neuro&shy;Fabrication</Title>
-        <SubTitle color="#4e4b4b" margin="0 auto">Neuroscience - Biofabrication</SubTitle>
-        <SubTitle size="1.5em">Personal Website of Geoffrey Potjewyd</SubTitle>
+        <Title>Geoffrey Potjewyd</Title>
+        <SubTitle color="#4e4b4b" margin="0 auto"> Neuroscience - Tissue Engineering</SubTitle>
+        <SubTitle size="1.5em">Regenerative Medicine PhD - Neuroscientist - Tissue Engineer - Science Writer</SubTitle>
 
         <ArticleList history={this.props.history}/>
 

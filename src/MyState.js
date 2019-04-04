@@ -6,7 +6,8 @@ class MyState extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      articles: []
+      articles: [],
+      isLoggedIn: false
     }
   }
 
@@ -18,10 +19,23 @@ class MyState extends Component {
     })
   }
 
+  login = () => {
+    this.setState({
+      isLoggedIn: true
+    })
+  }
+
+  logout = () => {
+    this.setState({
+      isLoggedIn: false
+    })
+  }
 
   render() {
     const props = {
       getArticles: this.getArticles,
+      login: this.login,
+      logout: this.logout,
       ...this.state
     }
 

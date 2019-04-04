@@ -12,6 +12,7 @@ articleRoutes.route('/')
     })
 
     .post((req, res) => {
+      console.log(req.body)
       if(Object.keys(req.body) !== 0) {
         const newObj = new Article(req.body)
         newObj.save(err => {

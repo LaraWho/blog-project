@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withState } from '../MyState';
 
 const Nav = (props) => {
   const Wrapper = styled.div`
@@ -47,16 +48,31 @@ const Nav = (props) => {
       font-size: 1.5em;
     }
   `
+
+  const logout = () => {
+    props.logout()
+    props.history.push('/')
+  }
+
   return (
     <Wrapper>
       <Header logoColor="#d8d8d8" onClick={() => props.history.push('/')}><i className="fas fa-flask" style={{marginRight: "10px"}}></i>Just Geoff</Header>
+      {props.isLoggedIn ?
+      <NavButtons>
+        <Button onClick={() => props.history.push('/articles')}>Articles</Button>
+        <Button onClick={() => props.history.push('/add')}>Add</Button>
+        <Button onClick={() => logout()}>Logout</Button>
+      </NavButtons>
+      :
       <NavButtons>
         <Button onClick={() => props.history.push('/articles')}>Articles</Button>
         <Button onClick={() => props.history.push('/about')}>About</Button>
         <Button onClick={() => props.history.push('/cv')}>CV</Button>
       </NavButtons>
+
+      }
     </Wrapper>
   );
 };
 
-export default Nav;
+export default withState(Nav);

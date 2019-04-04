@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import brain from '../newbrainsmaller.jpg'
 import ArticleList from './ArticleList';
 
+const HomeWrapper = styled.div`
+  width: 80vw;
+  margin: auto;
+`
 const Brain = styled.img`
   width: 50vw;
   margin-top: 1em;
@@ -11,6 +15,9 @@ const Brain = styled.img`
   }
   @media (min-width: 600px) {
     width: 40vw;   
+  }
+  @media (min-width: 1100px) {
+    width: 25vw;
   }
 `
 const Title = styled.h1`
@@ -33,11 +40,9 @@ const SubTitle = styled.h2.attrs(({size, color, margin}) => ({
       font-size: 2.5em;
     }
 `
-
 const LoginBtn = styled.h2`
   cursor: pointer;
   bottom: 5px;
-  width: 100vw;
   transition: all .5s ease;
   :hover {
     opacity: 0.6;
@@ -46,16 +51,16 @@ const LoginBtn = styled.h2`
 class Home extends Component {
   render() {
     return (
-      <div>
+      <HomeWrapper>
         <Brain src={brain} alt="brain"/>
         <Title>Neuro&shy;Fabrication</Title>
         <SubTitle color="#4e4b4b" margin="0 auto">Neuroscience - Biofabrication</SubTitle>
         <SubTitle size="1.5em">Personal Website of Geoffrey Potjewyd</SubTitle>
 
-        <ArticleList />
+        <ArticleList history={this.props.history}/>
 
         <LoginBtn onClick={() => this.props.history.push('/login')}>If you're Geoffrey, click here!</LoginBtn>
-      </div>
+      </HomeWrapper>
     );
   }
 }

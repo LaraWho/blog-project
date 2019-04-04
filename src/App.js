@@ -6,6 +6,8 @@ import CV from './components/CV';
 import Login from './components/Login';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import SingleArticle from './components/SingleArticle';
+import ArticleHub from './components/ArticleHub';
 
 const GlobalScope = createGlobalStyle`
   * {
@@ -13,13 +15,15 @@ const GlobalScope = createGlobalStyle`
   }
   body {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
     color: #333;
     background-color: #F2F2F2;
   }
   h1, h2 {
     letter-spacing: 2px;
     font-family: 'Amatic SC', sans-serif;
+  }
+  p {
+    font-family: 'Open Sans', sans-serif;
   }
 `
 const AppWrapper = styled.div`
@@ -38,6 +42,8 @@ class App extends Component {
             <Route path="/about" component={About} />
             <Route path="/cv" component={CV} />
             <Route path="/login" component={Login} />
+            <Route path="/articles" component={ArticleHub} />
+            <Route path="/:id" component={SingleArticle} />
           </Switch>
       </AppWrapper>
     );

@@ -4,11 +4,10 @@ import styled from 'styled-components';
 const CV = () => {
   const CVWrapper = styled.div`
     width: 80vw;
-    margin: auto;
+    margin: 1em auto 2em auto;
   `
   const CVTitle = styled.h1`
     font-size: 4em;
-    margin-top: 1em;
   `
   const SubTitle = styled.h2`
     text-align: left;
@@ -19,7 +18,6 @@ const CV = () => {
       text-align: center;
     }
   `
-
   const BodyText = styled.p`
     color: #585858;
     text-align: left;
@@ -31,11 +29,10 @@ const CV = () => {
   const List = styled.ul`
     text-align: left;
   `
-
   const ListItem = styled.li`
+    list-style-type: circle;
   `
-
-const Link = styled.a`
+  const Link = styled.a`
     color: #6d6c6c;    
     text-decoration: none;
     transition: all 0.5s ease;
@@ -72,15 +69,13 @@ const Link = styled.a`
         <SubTitle>Awarded Funding</SubTitle>
         <BodyText>EPSRC-MRC Centre for Doctoral Training Studentship 2016</BodyText>
         <SubTitle>Technical Skills</SubTitle>
-        <BodyText>
         <List>
-            <ListItem>Scientific writing and presenting</ListItem> <ListItem>Immunocytochemistry (ICC) and Immunofluorescence (IF)</ListItem>
-            <ListItem>Cellular and molecular biology</ListItem> <ListItem>3D culture cell encapsulation</ListItem>
-            <ListItem>Cell culture (immortalised & stem cell)</ListItem> <ListItem>Small scale and large scale grows</ListItem>
-            <ListItem>Rheology</ListItem> <ListItem>Induced pluripotent stem cells (iPSCs) differentiation</ListItem>
-            <ListItem>QuaListItemty assurance understanding</ListItem> <ListItem>Neuropharmacology</ListItem>
+          <ListItem>Scientific writing and presenting</ListItem> <ListItem>Immunocytochemistry (ICC) and Immunofluorescence (IF)</ListItem>
+          <ListItem>Cellular and molecular biology</ListItem> <ListItem>3D culture cell encapsulation</ListItem>
+          <ListItem>Cell culture (immortalised & stem cell)</ListItem> <ListItem>Small scale and large scale grows</ListItem>
+          <ListItem>Rheology</ListItem> <ListItem>Induced pluripotent stem cells (iPSCs) differentiation</ListItem>
+          <ListItem>QuaListItemty assurance understanding</ListItem> <ListItem>Neuropharmacology</ListItem>
           </List>
-        </BodyText>
         <SubTitle>Research Experience</SubTitle>
         <BodyText>
           CDT in Regenerative Medicine PhD Project Developing 3D cell models of the neurovascular unit (NVU) 

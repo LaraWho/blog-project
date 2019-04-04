@@ -33,7 +33,6 @@ const InputText = styled.h2`
     width: 60vw;
   }
 `
-
 const LoginBtn = styled(InputText)`
   cursor: pointer;
   padding: 0.25em;
@@ -45,7 +44,6 @@ const LoginBtn = styled(InputText)`
     color: #FFF;
   }
 `
-
 const LoginTitle = styled.h1`
   text-align: left;
   margin-bottom: 1em;

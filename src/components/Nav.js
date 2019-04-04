@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 const Nav = (props) => {
   const Wrapper = styled.div`
-    /* font-family: 'Montserrat', sans-serif; */
-    /* font-family: 'Montserrat Alternates', sans-serif; */
     font-family: 'Amatic SC', sans-serif;
     letter-spacing: 2px;
     display: flex;
@@ -12,7 +10,7 @@ const Nav = (props) => {
     align-items: center;
     background-color: #333333;
     box-shadow: 0 1px 2px #6d6c6c;
-    height: 8vh;
+    height: 10vh;
     width: 100vw;
     overflow-x: hidden;
     `
@@ -53,7 +51,7 @@ const Nav = (props) => {
     <Wrapper>
       <Header logoColor="#d8d8d8" onClick={() => props.history.push('/')}><i className="fas fa-flask" style={{marginRight: "10px"}}></i>Just Geoff</Header>
       <NavButtons>
-        <Button>Articles</Button>
+        <Button onClick={() => props.history.push('/articles')}>Articles</Button>
         <Button onClick={() => props.history.push('/about')}>About</Button>
         <Button onClick={() => props.history.push('/cv')}>CV</Button>
       </NavButtons>

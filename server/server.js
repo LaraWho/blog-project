@@ -5,12 +5,16 @@ const expressJWT = require('express-jwt');
 const port = 5678;
 const mongoose = require('mongoose');
 
-app.use(express.json())
+app.use(express.json());
+
+// app.use('/api', expressJWT({secret: process.env.SECRET}))
+
+app.use('/api/articles', require('./routes/articleRoutes'));
 
 mongoose.connect('mongodb://localhost:27017/geoff-blog', {useNewUrlParser: true}).then(() => {
   console.log('Connected to MongoDB!')
-})
+});
 
 app.listen(port, () => {
   console.log(`server up on ${port}!`)
-})
+});

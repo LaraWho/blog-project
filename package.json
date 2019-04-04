@@ -1,14 +1,16 @@
 {
   "name": "blog-project",
   "version": "0.1.0",
-  "proxy": "http://localhost:5678",
   "main": "server/server.js",
+  "proxy": "http://localhost:5678",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
     "mongoose": "^5.4.21",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

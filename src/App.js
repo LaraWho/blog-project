@@ -9,6 +9,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import SingleArticle from './components/SingleArticle';
 import ArticleHub from './components/ArticleHub';
 import AddArticle from './components/AddArticle';
+import { withState } from './MyState';
 
 const GlobalScope = createGlobalStyle`
   * {
@@ -25,9 +26,9 @@ const GlobalScope = createGlobalStyle`
     font-family: 'Amatic SC', sans-serif;
   }
   p {
+    line-height: 1.25em;
     font-family: 'Open Sans', sans-serif;
   }
-
   a {
     text-decoration: none;
     color: #333;
@@ -61,9 +62,14 @@ const GlobalScope = createGlobalStyle`
 const AppWrapper = styled.div`
   text-align: center;
 `
-
+const Footer = styled.h2`
+  color: #aba7a7;
+  cursor: pointer;
+  font-size: 1.5em;
+  width: 100vw;
+  padding-bottom: 10px;
+`
 class App extends Component {
-
   render() {
     return (
       <AppWrapper>
@@ -78,9 +84,10 @@ class App extends Component {
             <Route path="/articles" component={ArticleHub} />
             <Route path="/:id" component={SingleArticle} />
           </Switch>
+        <Footer as="a" href="http://lara-potjewyd.surge.sh/" target="_blank">{this.props.isLoggedIn ? 'Website created by the best sister ever!' : 'Website created by Lara Potjewyd'}</Footer>
       </AppWrapper>
     );
   }
 }
 
-export default withRouter(App);
+export default withState(withRouter(App));

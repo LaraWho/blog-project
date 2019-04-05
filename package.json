@@ -9,6 +9,7 @@
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
+    "html-react-parser": "^0.6.4",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "mongoose": "^5.4.21",
@@ -18,7 +19,8 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "react-transition-group": "^2.8.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "sweetalert2": "^8.8.1"
   },
   "scripts": {
     "start": "react-scripts start",

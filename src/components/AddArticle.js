@@ -4,17 +4,22 @@ import axios from 'axios';
 import { withState } from '../MyState';
 import styled from 'styled-components';
 import Login from './Login';
+import sweetie from 'sweetalert2';
 const ReactQuill = require('react-quill');
 
 const Editor = styled.div`
-
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; */
 `
 const Input = styled.input`
   margin: 0.5em;
 `
 const AddButton = styled.h2`
   cursor: pointer;
-  width: 60vw;
+  width: 80vw;
   margin: auto;
   padding: 0.25em;
   background-color: #d8d8d8;
@@ -25,6 +30,9 @@ const AddButton = styled.h2`
     background-color: #aba7a7;
     color: #FFF;
   }
+  @media (min-width: 600px) {
+    width: 60vw;
+  }
 `
 const InputText = styled.h2`
   text-align: left;
@@ -32,6 +40,9 @@ const InputText = styled.h2`
   margin: auto;
   :nth-of-type(1) {
     margin-top: 1em;
+    @media (min-width: 600px) {
+      margin-top: 2em;
+  }
   }
   @media (min-width: 600px) {
     width: 60vw;
@@ -75,9 +86,21 @@ class AddArticle extends Component {
   }
 
   addArticle = () => {
+    const Toast = sweetie.mixin({
+      toast: true,
+      position: 'bottom-right',
+      showConfirmButton: false,
+      timer: 2000
+    });
     const { text, imageURL, link, title } = this.state
     axios.post('/api/articles', {content: text, imageURL, link, title}).then(res => {
-      console.log('saved!')
+      Toast.fire({
+        type: 'success',
+        title: 'added!'
+      })
+      setTimeout(() => {
+        this.props.history.push('/')     
+    }, 1500)
     }).catch(err => {
       console.log(err)
     })
@@ -89,19 +112,20 @@ class AddArticle extends Component {
       <Editor>
       {this.props.isLoggedIn ?
       <Editor>      
-        <div className="text-editor">
-          <ReactQuill theme="snow"
-                      onChange={this.handleChange}
-                      modules={this.modules}
-                      formats={this.formats}>
-          </ReactQuill>
-        </div>
         <InputText>Title</InputText>
-        <Input type="text" name="title" value={title} onChange={this.handleInputChange}/>
-        <InputText>Image URL Only</InputText>
+        <Input type="text" name="title" value={title} onChange={this.handleInputChange} required/>
+        <InputText>Image URL</InputText>
         <Input type="text" name="imageURL" value={imageURL} onChange={this.handleInputChange}/>
         <InputText>Publication Link</InputText>
-        <Input type="text" name="link" value={link} onChange={this.handleInputChange}/>
+        <Input type="text" name="link" value={link} onChange={this.handleInputChange} required/>
+        <InputText>Content</InputText>
+        <div className="text-editor" style={{width: '80vw', margin: '1em auto'}}>
+        <ReactQuill theme="snow"
+                    onChange={this.handleChange}
+                    modules={this.modules}
+                    formats={this.formats}>
+        </ReactQuill>
+        </div>
         <AddButton onClick={() => this.addArticle()}>add</AddButton>
       </Editor>
       :

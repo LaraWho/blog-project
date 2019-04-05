@@ -16,9 +16,8 @@ class ArticleList extends Component {
     this.props.getArticles()
   }
 
-
   render() {
-    const mappedArray = this.props.articles.map(el => {
+    const mappedArray = this.props.articles.slice(0).reverse().map(el => {
       return <Article key={el._id} article={el} history={this.props.history}/>
     })
     return (

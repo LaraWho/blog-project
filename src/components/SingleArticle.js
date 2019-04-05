@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { withState } from '../MyState';
 import styled from 'styled-components';
-var moment = require('moment');
+import parse from 'html-react-parser';
+const moment = require('moment');
 
 const SingleArticleWrapper = styled.div`
   margin: auto;
-  `
-
+`
 const ArticleHeader = styled.h1`
   font-size: 3em;
   margin: 0;
@@ -30,6 +30,10 @@ const ArticleSubTitle = styled.h2`
   margin: 20px auto 0 auto;
   font-size: 1.5em;
 `
+const ArticleLink = styled(ArticleSubTitle)`
+  font-family: 'Amatic SC', sans-serif;
+  cursor: pointer;
+`
 class SingleArticle extends Component {
 
   render() {
@@ -42,9 +46,9 @@ class SingleArticle extends Component {
       <SingleArticleWrapper >
         <ArticleHeader>{article.title}</ArticleHeader>
         <ArticleImage src={article.imageURL}/>
-        <ArticleSubTitle as="a" href={article.link} target="_blank">Link to published article</ArticleSubTitle>
+        <ArticleLink as="a" href={article.link} target="_blank">Link to published article</ArticleLink>
         <ArticleSubTitle>Published {moment(article.date).format('Do MMMM YYYY')}</ArticleSubTitle>
-        <ArticleContent>{article.content}</ArticleContent>
+        <ArticleContent>{parse(article.content)}</ArticleContent>
       </SingleArticleWrapper>
     );
   }

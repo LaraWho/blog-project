@@ -4,10 +4,6 @@ import pen from '../pentwo.jpg'
 
 const About = () => {
   const AboutWrapper = styled.div`
-    /* display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center; */
     width: 80vw;
     margin: auto;
   `

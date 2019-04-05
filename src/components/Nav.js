@@ -27,7 +27,7 @@ const Nav = (props) => {
   const Header = styled.h1`
     cursor: pointer;
     color: ${props => props.logoColor || '#aba7a7'};
-    width: 40vw;
+    width: 50vw;
     font-size: 1.5em;
     text-align: center;
     transition: all .5s ease;
@@ -37,6 +37,7 @@ const Nav = (props) => {
     }
     @media (min-width: 380px) {
       font-size: 1.75em;
+      width: 40vw;
     }
   `
   const Button = styled(Header)`
@@ -56,7 +57,7 @@ const Nav = (props) => {
 
   return (
     <Wrapper>
-      <Header logoColor="#d8d8d8" onClick={() => props.history.push('/')}><i className="fas fa-flask" style={{marginRight: "10px"}}></i>Just Geoff</Header>
+      <Header logoColor="#d8d8d8" onClick={() => props.history.push('/')}><i className="fas fa-flask" style={{marginRight: "10px"}}></i>Geoffrey Potjewyd</Header>
       {props.isLoggedIn ?
       <NavButtons>
         <Button onClick={() => props.history.push('/articles')}>Articles</Button>

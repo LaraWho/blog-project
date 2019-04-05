@@ -7,7 +7,9 @@ class MyState extends Component {
     super(props)
     this.state = {
       articles: [],
-      isLoggedIn: false
+      isLoggedIn: false,
+      user: '',
+      token: ''
     }
   }
 
@@ -16,18 +18,34 @@ class MyState extends Component {
       this.setState({
         articles: res.data
       })
+    }).catch(err => {
+      console.log(err)
     })
   }
 
-  login = () => {
-    this.setState({
-      isLoggedIn: true
+  login = (username, password) => {
+    axios.post('/auth/login', {username, password}).then(res => {
+      const { token, user } = res.data
+      console.log(token, user)
+      localStorage.setItem("token", token)
+      localStorage.setItem("user", JSON.stringify(user))
+      this.setState({
+        user, 
+        token,
+        isLoggedIn: true
+      })
+    }).catch(err => {
+      console.log(err)
     })
   }
 
   logout = () => {
+    localStorage.removeItem("user")
+    localStorage.removeItem("token")
     this.setState({
-      isLoggedIn: false
+      isLoggedIn: false,
+      user: '',
+      token: ''
     })
   }
 

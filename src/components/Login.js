@@ -41,20 +41,35 @@ const LoginTitle = styled.h1`
   }
 `
 class Login extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      username: '',
+      password: ''
+    }
+  }
 
   login = () => {
     this.props.history.push('/add')
-    this.props.login()
+    this.props.login(this.state.username, this.state.password)
+  }
+
+  handleInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
   render() {
+    const { username, password } = this.state
     return (
       <LoginWrapper>
         <LoginTitle>Only Geoffrey beyond this point!</LoginTitle>
         <InputText>Email</InputText>
-        <LoginInput ></LoginInput>
+        <LoginInput type="text" name="username" value={username} onChange={this.handleInputChange} required></LoginInput>
         <InputText>Password</InputText>
-        <LoginInput></LoginInput>
+        <LoginInput type="text" name="password" value={password} onChange={this.handleInputChange} required></LoginInput>
         <LoginBtn onClick={this.login}>Login</LoginBtn>
       </LoginWrapper>
     );

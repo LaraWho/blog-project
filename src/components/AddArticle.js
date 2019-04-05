@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import 'react-quill/dist/quill.snow.css';
-import axios from 'axios';
 import { withState } from '../MyState';
 import styled from 'styled-components';
 import Login from './Login';
 import sweetie from 'sweetalert2';
+import axios from 'axios';
 const ReactQuill = require('react-quill');
 
 const Editor = styled.div`
@@ -55,7 +55,8 @@ class AddArticle extends Component {
       text: '',
       imageURL: '',
       link: '',
-      title: ''
+      title: '',
+      date: ''
     }
   }
   modules = {
@@ -92,8 +93,8 @@ class AddArticle extends Component {
       showConfirmButton: false,
       timer: 2000
     });
-    const { text, imageURL, link, title } = this.state
-    axios.post('/api/articles', {content: text, imageURL, link, title}).then(res => {
+    const { text, imageURL, link, title, date } = this.state
+    axios.post('/api/articles', {content: text, imageURL, link, title, date}).then(res => {
       Toast.fire({
         type: 'success',
         title: 'added!'
@@ -105,9 +106,10 @@ class AddArticle extends Component {
       console.log(err)
     })
   }
+
   
   render() {
-    const { imageURL, link, title } = this.state
+    const { imageURL, link, title, date } = this.state
     return (
       <Editor>
       {this.props.isLoggedIn ?
@@ -118,6 +120,8 @@ class AddArticle extends Component {
         <Input type="text" name="imageURL" value={imageURL} onChange={this.handleInputChange}/>
         <InputText>Publication Link</InputText>
         <Input type="text" name="link" value={link} onChange={this.handleInputChange} required/>
+        <InputText>Date Published</InputText>
+        <Input type="text" name="date" value={date} onChange={this.handleInputChange} required/>
         <InputText>Content</InputText>
         <div className="text-editor" style={{width: '80vw', margin: '1em auto'}}>
         <ReactQuill theme="snow"

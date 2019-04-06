@@ -50,8 +50,8 @@ const Nav = (props) => {
     }
   `
 
-  const logout = () => {
-    props.logout()
+const logout = () => {
+  props.logout()
     props.history.push('/')
   }
 

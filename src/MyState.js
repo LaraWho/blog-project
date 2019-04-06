@@ -23,6 +23,17 @@ class MyState extends Component {
     })
   }
 
+  saveArticle = (id, article) => {
+    axios.put(`/api/articles/${id}`, article).then(res => {
+      console.log(res.data)
+      this.setState(prevState => ({
+        articles: [res.data, ...prevState.articles]
+      }))
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
   login = (username, password) => {
     axios.post('/auth/login', {username, password}).then(res => {
       const { token, user } = res.data
@@ -52,6 +63,7 @@ class MyState extends Component {
   render() {
     const props = {
       getArticles: this.getArticles,
+      saveArticle: this.saveArticle,
       login: this.login,
       logout: this.logout,
       ...this.state

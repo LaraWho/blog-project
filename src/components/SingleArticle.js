@@ -30,9 +30,15 @@ const ArticleSubTitle = styled.h2`
   margin: 20px auto 0 auto;
   font-size: 1.5em;
 `
+const ImageText = styled.p`
+    text-align: center;
+    width: 80vw;
+    margin: 1em auto;
+`
 const ArticleLink = styled(ArticleSubTitle)`
   font-family: 'Amatic SC', sans-serif;
   cursor: pointer;
+  font-size: 2em;
 `
 class SingleArticle extends Component {
 
@@ -46,6 +52,7 @@ class SingleArticle extends Component {
       <SingleArticleWrapper >
         <ArticleHeader>{article.title}</ArticleHeader>
         <ArticleImage src={article.imageURL}/>
+        <ImageText>{article.imageText}</ImageText>
         <ArticleLink as="a" href={article.link} target="_blank">Link to published article</ArticleLink>
         <ArticleSubTitle>Published {moment(article.date).format('Do MMMM YYYY')}</ArticleSubTitle>
         <ArticleContent>{parse(article.content)}</ArticleContent>

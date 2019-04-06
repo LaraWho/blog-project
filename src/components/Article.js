@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { withState } from '../MyState';
+import axios from 'axios';
 
 const Article = (props) => {
   const Article = styled.div`
@@ -36,14 +37,21 @@ const Article = (props) => {
     }
   `
 
+  const deleteArticle = (id) => {
+    axios.delete(`/api/articles/${id}`).then(res => {
+      console.log(res.data)
+      props.getArticles()
+    })
+  }
+
   return (
     <Article>
       {props.isLoggedIn ? 
-      <Article onClick={() => props.history.push(`/${props.article._id}`)}>
-        <ArticleHeader>{props.article.title}</ArticleHeader>
+      <Article>
+        <ArticleHeader onClick={() => props.history.push(`/${props.article._id}`)}>{props.article.title}</ArticleHeader>
         <Thumbnail src={props.article.imageURL} alt={props.article.title}/>
-        <DeleteAndEdit>edit</DeleteAndEdit>
-        <DeleteAndEdit>delete</DeleteAndEdit>
+        <DeleteAndEdit onClick={() => props.history.push('/add')}>edit</DeleteAndEdit>
+        <DeleteAndEdit onClick={() => deleteArticle(props.article._id)}>delete</DeleteAndEdit>
       </Article>
         :
       <Article onClick={() => props.history.push(`/${props.article._id}`)}>

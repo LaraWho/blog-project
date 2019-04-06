@@ -53,6 +53,7 @@ class AddArticle extends Component {
     super(props);
     this.state = {
       text: '',
+      imageText: '',
       imageURL: '',
       link: '',
       title: '',
@@ -93,8 +94,8 @@ class AddArticle extends Component {
       showConfirmButton: false,
       timer: 2000
     });
-    const { text, imageURL, link, title, date } = this.state
-    axios.post('/api/articles', {content: text, imageURL, link, title, date}).then(res => {
+    const { text, imageText, imageURL, link, title, date } = this.state
+    axios.post('/api/articles', {content: text, imageText, imageURL, link, title, date}).then(res => {
       Toast.fire({
         type: 'success',
         title: 'added!'
@@ -106,10 +107,8 @@ class AddArticle extends Component {
       console.log(err)
     })
   }
-
-  
   render() {
-    const { imageURL, link, title, date } = this.state
+    const { imageText, imageURL, link, title, date } = this.state
     return (
       <Editor>
       {this.props.isLoggedIn ?
@@ -118,6 +117,8 @@ class AddArticle extends Component {
         <Input type="text" name="title" value={title} onChange={this.handleInputChange} required/>
         <InputText>Image URL</InputText>
         <Input type="text" name="imageURL" value={imageURL} onChange={this.handleInputChange}/>
+        <InputText>Image Text</InputText>
+        <Input type="text" name="imageText" value={imageText} onChange={this.handleInputChange}/>
         <InputText>Publication Link</InputText>
         <Input type="text" name="link" value={link} onChange={this.handleInputChange} required/>
         <InputText>Date Published</InputText>
@@ -130,7 +131,7 @@ class AddArticle extends Component {
                     formats={this.formats}>
         </ReactQuill>
         </div>
-        <AddButton onClick={() => this.addArticle()}>add</AddButton>
+        <AddButton onClick={() => this.addArticle()}>save</AddButton>
       </Editor>
       :
       <Editor>

@@ -66,7 +66,7 @@ class Login extends Component {
     return (
       <LoginWrapper>
         <LoginTitle>Only Geoffrey beyond this point!</LoginTitle>
-        <InputText>Email</InputText>
+        <InputText>Username</InputText>
         <LoginInput type="text" name="username" value={username} onChange={this.handleInputChange} required></LoginInput>
         <InputText>Password</InputText>
         <LoginInput type="text" name="password" value={password} onChange={this.handleInputChange} required></LoginInput>

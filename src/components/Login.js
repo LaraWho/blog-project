@@ -51,7 +51,7 @@ class Login extends Component {
   }
 
   login = () => {
-    this.props.history.push('/add')
+    this.props.history.push('/')
     this.props.login(this.state.username, this.state.password)
   }
 
@@ -69,7 +69,7 @@ class Login extends Component {
         <InputText>Username</InputText>
         <LoginInput type="text" name="username" value={username} onChange={this.handleInputChange} required></LoginInput>
         <InputText>Password</InputText>
-        <LoginInput type="text" name="password" value={password} onChange={this.handleInputChange} required></LoginInput>
+        <LoginInput type="password" name="password" value={password} onChange={this.handleInputChange} required></LoginInput>
         <LoginBtn onClick={this.login}>Login</LoginBtn>
       </LoginWrapper>
     );

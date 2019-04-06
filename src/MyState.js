@@ -9,7 +9,9 @@ class MyState extends Component {
       articles: [],
       isLoggedIn: false,
       user: '',
-      token: ''
+      token: '',
+      isEditing: false,
+      articleToEdit: []
     }
   }
 
@@ -23,21 +25,29 @@ class MyState extends Component {
     })
   }
 
-  saveArticle = (id, article) => {
-    axios.put(`/api/articles/${id}`, article).then(res => {
-      console.log(res.data)
+  saveEdit = (_id, article) => {
+    axios.put(`/api/articles/${_id}`, article).then(res => {
       this.setState(prevState => ({
-        articles: [res.data, ...prevState.articles]
+        articles: [res.data, ...prevState.articles],
+        isEditing: false
       }))
     }).catch(err => {
       console.log(err)
     })
   }
 
+  editing = (article) => {
+    if(this.state.isLoggedIn) {
+      this.setState({
+        isEditing: true,
+        articleToEdit: article
+      })
+    }
+  }
+
   login = (username, password) => {
     axios.post('/auth/login', {username, password}).then(res => {
       const { token, user } = res.data
-      console.log(token, user)
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
       this.setState({
@@ -63,7 +73,8 @@ class MyState extends Component {
   render() {
     const props = {
       getArticles: this.getArticles,
-      saveArticle: this.saveArticle,
+      saveEdit: this.saveEdit,
+      editing: this.editing,
       login: this.login,
       logout: this.logout,
       ...this.state

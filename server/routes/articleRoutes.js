@@ -27,8 +27,8 @@ articleRoutes.route('/:_id')
 
     .put((req, res) => {
       console.log(req.body)
-      console.log(req.params.id)
-      Article.findOneAndUpdate({_id: req.params.id}, req.body, {new: true},
+      console.log(req.params._id)
+      Article.findOneAndUpdate({_id: req.params._id}, req.body, {new: true},
         (err, article) => {
           if(err) res.status(500).send(err)
           return res.status(200).send(article)

@@ -7,16 +7,18 @@ const ArticleWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 2.25em;
 `
 class ArticleList extends Component {
 
   componentDidMount() {
     this.props.getArticles()
+    console.log(this.props.articles)
   }
 
   render() {
+
     const mappedArray = this.props.articles.slice(0).reverse().map(el => {
       return <Article key={el._id} article={el} history={this.props.history}/>
     })

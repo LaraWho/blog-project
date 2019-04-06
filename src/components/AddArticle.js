@@ -38,16 +38,22 @@ const InputText = styled.h2`
   text-align: left;
   width: 80vw;
   margin: auto;
+  @media (min-width: 600px) {
+    width: 60vw;
+  }
   :nth-of-type(1) {
     margin-top: 1em;
     @media (min-width: 600px) {
       margin-top: 2em;
-  }
-  }
-  @media (min-width: 600px) {
-    width: 60vw;
+    }
   }
 `
+const Toast = sweetie.mixin({
+  toast: true,
+  position: 'bottom-right',
+  showConfirmButton: false,
+  timer: 2000
+});
 class AddArticle extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +66,21 @@ class AddArticle extends Component {
       date: ''
     }
   }
+
+  componentDidMount() {
+    if(this.props.isEditing) {
+      const {editContent, title: editTitle, imageURL: editURL, imageText: editImageText, date: editDate, link: editLink} = this.props.articleToEdit
+      this.setState({
+        text: editContent,
+        imageText: editImageText,
+        imageURL: editURL,
+        link: editLink,
+        title: editTitle,
+        date: editDate
+      })
+    }
+  }
+
   modules = {
     toolbar: [
       [{ 'header': [1, 2, false] }],
@@ -88,27 +109,34 @@ class AddArticle extends Component {
   }
 
   addArticle = () => {
-    const Toast = sweetie.mixin({
-      toast: true,
-      position: 'bottom-right',
-      showConfirmButton: false,
-      timer: 2000
-    });
     const { text, imageText, imageURL, link, title, date } = this.state
     axios.post('/api/articles', {content: text, imageText, imageURL, link, title, date}).then(res => {
       Toast.fire({
         type: 'success',
-        title: 'added!'
+        title: 'Saved!'
       })
       setTimeout(() => {
-        this.props.history.push('/')     
+        this.props.history.push('/')
     }, 1500)
     }).catch(err => {
       console.log(err)
     })
   }
+
+  saveEdit = (_id, article) => {
+  this.props.saveEdit(_id, article)
+  Toast.fire({
+    type: 'success',
+    title: 'Saved!'
+  })
+  setTimeout(() => {
+    this.props.history.push('/')     
+  }, 1500)
+  }
+
   render() {
-    const { imageText, imageURL, link, title, date } = this.state
+    const { _id, content: editContent } = this.props.articleToEdit
+    const { text, imageText, imageURL, link, title, date } = this.state
     return (
       <Editor>
       {this.props.isLoggedIn ?
@@ -128,10 +156,11 @@ class AddArticle extends Component {
         <ReactQuill theme="snow"
                     onChange={this.handleChange}
                     modules={this.modules}
-                    formats={this.formats}>
+                    formats={this.formats}
+                    defaultValue={this.props.isEditing ? editContent : ''}>
         </ReactQuill>
         </div>
-        <AddButton onClick={() => this.addArticle()}>save</AddButton>
+        <AddButton onClick={this.props.isEditing ? () => this.saveEdit(_id, {content: text, imageText, imageURL, link, title, date}) : () => this.addArticle()}>save</AddButton>
       </Editor>
       :
       <Editor>

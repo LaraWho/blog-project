@@ -4,7 +4,6 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 
 userRoutes.post('/register', (req, res, next) => {
-    console.log(req.body)
     User.findOne({username: req.body.username}, (err, existingUser) => {
       if(err) {
         return res.status(500).send(err)

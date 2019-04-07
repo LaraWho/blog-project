@@ -41,6 +41,9 @@ const ArticleLink = styled(ArticleSubTitle)`
   font-size: 2em;
 `
 class SingleArticle extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   render() {
     const { id } = this.props.match.params

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import sweetie from 'sweetalert2';
 const { Provider, Consumer } = React.createContext();
 
 class MyState extends Component {
@@ -7,9 +8,8 @@ class MyState extends Component {
     super(props)
     this.state = {
       articles: [],
-      isLoggedIn: false,
-      user: '',
-      token: '',
+      user: JSON.parse(localStorage.getItem("user")) || {},
+      token: localStorage.token || '',
       isEditing: false,
       articleToEdit: []
     }
@@ -37,7 +37,7 @@ class MyState extends Component {
   }
 
   editing = (article) => {
-    if(this.state.isLoggedIn) {
+    if(this.state.token) {
       this.setState({
         isEditing: true,
         articleToEdit: article
@@ -45,18 +45,33 @@ class MyState extends Component {
     }
   }
 
+  removeEdit = () => {
+    this.setState({
+      isEditing: false,
+      articleToEdit: []
+    })
+  }
+
   login = (username, password) => {
     axios.post('/auth/login', {username, password}).then(res => {
       const { token, user } = res.data
+      console.log(token, user)
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
       this.setState({
         user, 
-        token,
-        isLoggedIn: true
+        token
+      }, () => {
+        window.location.href = "/";
       })
     }).catch(err => {
       console.log(err)
+      sweetie.fire({
+        text: 'Incorrect!',
+        type: 'error',
+        confirmButtonText: 'Try again',
+        confirmButtonColor: '#777'
+      })
     })
   }
 
@@ -64,7 +79,6 @@ class MyState extends Component {
     localStorage.removeItem("user")
     localStorage.removeItem("token")
     this.setState({
-      isLoggedIn: false,
       user: '',
       token: ''
     })
@@ -75,6 +89,7 @@ class MyState extends Component {
       getArticles: this.getArticles,
       saveEdit: this.saveEdit,
       editing: this.editing,
+      removeEdit: this.removeEdit,
       login: this.login,
       logout: this.logout,
       ...this.state

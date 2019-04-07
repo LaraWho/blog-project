@@ -47,6 +47,7 @@ const Nav = (props) => {
     font-weight: 700;
     @media (min-width: 380px) {
       font-size: 1.5em;
+      width: unset;
     }
   `
 
@@ -58,15 +59,17 @@ const logout = () => {
   return (
     <Wrapper>
       <Header logoColor="#d8d8d8" onClick={() => props.history.push('/')}><i className="fas fa-flask" style={{marginRight: "10px"}}></i>Geoffrey Potjewyd</Header>
-      {props.isLoggedIn ?
+      {props.token !== '' ?
       <NavButtons>
         <Button onClick={() => props.history.push('/articles')}>Articles</Button>
+        <Button onClick={() => props.history.push('/publications')}>Publications</Button>
         <Button onClick={() => props.history.push('/add')}>Add</Button>
         <Button onClick={() => logout()}>Logout</Button>
       </NavButtons>
       :
       <NavButtons>
         <Button onClick={() => props.history.push('/articles')}>Articles</Button>
+        <Button onClick={() => props.history.push('/publications')}>Publications</Button>
         <Button onClick={() => props.history.push('/about')}>About</Button>
         <Button onClick={() => props.history.push('/cv')}>CV</Button>
       </NavButtons>

@@ -24,11 +24,11 @@ const ArticleSchema = new Schema({
   link: {
     type: String,
     required: true
+  },
+  publisher: {
+    type: String,
+    required: true
   }
-  // topic: {
-  //   type: String,
-  //   required: true
-  // }
 })
 
 module.exports = mongoose.model("article", ArticleSchema)

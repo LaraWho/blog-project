@@ -51,10 +51,9 @@ const Article = (props) => {
     props.history.push('/add')
     props.editing(article)
   }
-
   return (
     <Article>
-      {props.isLoggedIn ? 
+      {props.token !== '' ? 
       <Article>
         <ArticleHeader onClick={() => props.history.push(`/${props.article._id}`)}>{props.article.title}</ArticleHeader>
         <Thumbnail src={props.article.imageURL} alt={props.article.title}/>

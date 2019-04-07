@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 app.use(express.json());
 
-app.use('/api/articles/add', expressJWT({secret: process.env.SECRET}))
+app.use('/add', expressJWT({secret: process.env.SECRET}))
 
 app.use('/auth', require('./routes/userRoutes'));
 app.use('/api/articles', require('./routes/articleRoutes'));

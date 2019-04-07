@@ -48,6 +48,14 @@ const InputText = styled.h2`
     }
   }
 `
+const Select = styled.select`
+
+`
+
+const Option = styled.option`
+
+`
+
 const Toast = sweetie.mixin({
   toast: true,
   position: 'bottom-right',
@@ -159,7 +167,14 @@ class AddArticle extends Component {
         <InputText>Date Published</InputText>
         <Input type="text" name="date" value={date} onChange={this.handleInputChange} required/>
         <InputText>Place Published</InputText>
-        <Input type="text" name="publisher" value={publisher} onChange={this.handleInputChange} required/>
+        <Select name="publisher" value={publisher} onChange={this.handleInputChange}>
+          <Option value="select">Select...</Option>
+          <Option value="PhysicsWorld">PhysicsWorld</Option>
+          <Option value="RegMedNet">RegMedNet</Option>
+          <Option value="3DMedNet">3DMedNet</Option>
+          <Option value="Reliawire">Reliawire</Option>
+        </Select>
+        {/* <Input type="text" name="publisher" value={publisher} onChange={this.handleInputChange} required/> */}
         <InputText>Content</InputText>
         <div className="text-editor" style={{width: '80vw', margin: '1em auto'}}>
         <ReactQuill theme="snow"

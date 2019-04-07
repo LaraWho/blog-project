@@ -19,12 +19,12 @@ class ArticleList extends Component {
   }
 
   render() {
-    const mappedArray = this.props.articles.slice(0).reverse().map(el => {
-      return <Article key={el._id} article={el} history={this.props.history}/>
+    const articleThumbnails = this.props.articles.slice(0).reverse().map(article => {
+      return <Article key={article._id} article={article} history={this.props.history}/>
     })
     return (
       <ArticleWrapper>
-        {mappedArray}
+        {articleThumbnails}
       </ArticleWrapper>
     );
   }

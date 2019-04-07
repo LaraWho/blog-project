@@ -56,7 +56,7 @@ class SingleArticle extends Component {
         <ArticleHeader>{article.title}</ArticleHeader>
         <ArticleImage src={article.imageURL}/>
         <ImageText>{article.imageText}</ImageText>
-        <ArticleLink as="a" href={article.link} target="_blank">Link to published article</ArticleLink>
+        <ArticleLink as="a" href={article.link} target="_blank">Link to published article at {article.publisher}</ArticleLink>
         <ArticleSubTitle>Published {moment(article.date).format('Do MMMM YYYY')}</ArticleSubTitle>
         <ArticleContent>{parse(article.content)}</ArticleContent>
       </SingleArticleWrapper>

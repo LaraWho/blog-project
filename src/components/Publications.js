@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import { withState } from '../MyState';
+import styled from 'styled-components';
 
+const Link = styled.a`
+  /* text-align: left; */
+  width: 80vw;
+  margin: auto;
+  font-family: 'Open Sans', sans-serif;
+`
+const Header = styled.h1`
+
+`
 class Publications extends Component {
 
   componentDidMount() {
@@ -10,24 +20,29 @@ class Publications extends Component {
   }
 
   render() {
-    // let found = this.props.articles.find(el => {
-    //   return el.publisher.match(/world/gi)
-    // });
-    // console.log(found)
-
-    const mappedPW = this.props.articles.map(el => {
-      return <div key={el._id}>
-        {el.publisher.replace(/\s+/g, "").match(/physicsworld/gi) ?
-        <a href={el.link} target="_blank" rel="noopener noreferrer">{el.title}</a> : null
-        }
-      </div>
+    
+  const publisherDictionary = this.props.articles.reduce((acc, article) => {
+    if(acc[article.publisher]) {
+      acc[article.publisher].push(article)
+      return acc
+    } else {
+      acc[article.publisher] = [article]
+      return acc
+    }
+  }, {})
+  
+  const articleTitleByPublisher = Object.entries(publisherDictionary).map(publisherArticleArray => {
+    return <div key={publisherArticleArray[0]}>
+            <Header>{publisherArticleArray[0]}</Header>
+            {publisherArticleArray[1].map(article => {
+              return <Link key={article._id} href={article.link} target="_blank" rel="noopener noreferrer">{article.title}</Link>
+            })}
+          </div>
     })
 
     return (
       <div>
-        <h1>Physics World</h1>
-
-        {mappedPW}
+        {articleTitleByPublisher}
       </div>
     );
   }

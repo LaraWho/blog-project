@@ -9,9 +9,11 @@ const HomeWrapper = styled.div`
 `;
 const Brain = styled.img`
   width: 50vw;
-  margin-top: 1em;
+  margin: 1em;
+  margin-top: 2.5em;
   @media (min-width: 450px) {
-    margin-top: 2.5em;
+    margin: 2.5em;
+    margin-top: 4em;
   }
   @media (min-width: 600px) {
     width: 35vw;

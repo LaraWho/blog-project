@@ -18,20 +18,68 @@ const DropDown = styled(Wrapper)`
   box-shadow: none;
   justify-content: flex-end;
   padding-right: 8%;
+
   @media (min-width: 800px) {
     padding-right: 0;
   }
 `;
 
-const NavButtons = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+const Header = styled.h1`
+  cursor: pointer;
   width: 60vw;
+  font-weight: 600;
+  font-size: 1.25em;
+  text-align: center;
   color: #d9d9d9;
-  display: none;
+  transition: all 0.5s ease;
+  :hover {
+    opacity: 0.5;
+  }
+  /* @media (min-width: 500px) {
+    width: 70vw;
+  } */
+`;
+
+const Button = styled(Header)`
+  font-size: 1.25em;
+  width: unset;
+  text-decoration: none;
+  font-weight: 400;
+  position: relative;
+  margin: 10px;
+  @media (min-width: 800px) {
+    position: unset;
+  }
+`;
+
+const NavButtons = styled.div`
+  display: ${props => (props.isOpen ? "flex" : "none")};
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  height: ${props => (props.isOpen ? "100vh" : "0vh")};
+  width: 100vw;
+  right: 0px;
+  top: 10vh;
+  padding: 2em;
+  position: ${props => (props.isOpen ? "absolute" : "unset")};
+  opacity: ${props => (props.isOpen ? "1" : "0")};
+  background-color: #333333;
+  filter: drop-shadow(0px 2px 2px #6d6c6c);
+  z-index: 6;
+  transition: height 500ms ease;
+
   @media (min-width: 800px) {
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width: 60vw;
+    color: #d9d9d9;
+    height: 10vh;
+    opacity: 1;
+    position: unset;
+    filter: none;
   }
 `;
 
@@ -41,6 +89,11 @@ const HamburgerWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  transition: all 500ms ease;
+
+  :hover {
+    opacity: 0.6;
+  }
 `;
 const Hamburger = styled.div`
   width: 35px;
@@ -49,7 +102,7 @@ const Hamburger = styled.div`
   border-radius: 2px;
   margin: 2.5px;
   transition: all 500ms ease;
-  filter: drop-shadow(1px 1px 2px #333);
+
   @media (min-width: 800px) {
     display: none;
   }
@@ -76,29 +129,6 @@ const Line3 = styled(Hamburger)`
       : "rotate(0deg) translate(0px, 0px)"};
 `;
 
-const Header = styled.h1`
-  cursor: pointer;
-  width: 60vw;
-  font-weight: 600;
-  font-size: 1.25em;
-  text-align: center;
-  color: #d9d9d9;
-  transition: all 0.5s ease;
-  :hover {
-    opacity: 0.5;
-  }
-  /* @media (min-width: 500px) {
-    width: 70vw;
-  } */
-`;
-
-const Button = styled(Header)`
-  font-size: 1.25em;
-  width: unset;
-  text-decoration: none;
-  font-weight: 400;
-`;
-
 class Nav extends Component {
   constructor(props) {
     super(props);
@@ -107,9 +137,20 @@ class Nav extends Component {
     };
   }
 
+  componentWillReceiveProps() {
+    this.closeMenu();
+  }
+
   logout = () => {
-    this.props.logout();
-    this.props.history.push("/");
+    this.setState(
+      {
+        isOpen: false
+      },
+      () => {
+        this.props.logout();
+        this.props.history.push("/");
+      }
+    );
   };
 
   openMenu = () => {
@@ -118,8 +159,13 @@ class Nav extends Component {
     }));
   };
 
+  closeMenu = () => {
+    this.setState({
+      isOpen: false
+    });
+  };
+
   render() {
-    console.log(this.state.isOpen);
     return (
       <Wrapper>
         <Header
@@ -146,7 +192,7 @@ class Nav extends Component {
               <Button onClick={() => this.props.history.push("/add")}>
                 Add
               </Button>
-              <Button onClick={() => this.logout()}>Logout</Button>
+              <Button onClick={this.logout}>Logout</Button>
             </NavButtons>
           </DropDown>
         ) : (

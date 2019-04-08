@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import { withState } from './MyState';
-import { Switch, Route, withRouter } from 'react-router-dom';
-import Nav from './components/Nav';
-import About from './components/About';
-import Home from './components/Home';
-import CV from './components/CV';
-import Login from './components/Login';
-import SingleArticle from './components/SingleArticle';
-import ArticleHub from './components/ArticleHub';
-import AddArticle from './components/AddArticle';
-import Publications from './components/Publications';
+import React, { Component } from "react";
+import styled, { createGlobalStyle } from "styled-components";
+import { withState } from "./MyState";
+import { Switch, Route, withRouter } from "react-router-dom";
+import Nav from "./components/Nav";
+import About from "./components/About";
+import Home from "./components/Home";
+import CV from "./components/CV";
+import Login from "./components/Login";
+import SingleArticle from "./components/SingleArticle";
+import ArticleHub from "./components/ArticleHub";
+import AddArticle from "./components/AddArticle";
+import Publications from "./components/Publications";
 
 const GlobalScope = createGlobalStyle`
   * {
@@ -23,8 +23,7 @@ const GlobalScope = createGlobalStyle`
     overflow-x: hidden;
   }
   h1, h2 {
-    letter-spacing: 2px;
-    font-family: 'Amatic SC', sans-serif;
+    font-family: 'Muli', sans-serif;
   }
   p {
     line-height: 1.25em;
@@ -33,8 +32,8 @@ const GlobalScope = createGlobalStyle`
   a {
     text-decoration: none;
     color: #333;
-    letter-spacing: 2px;
-    font-family: 'Amatic SC', sans-serif;
+    font-family: 'Muli', sans-serif;
+    font-weight: 600;
     text-align: left;
     width: 80vw;
     margin: 10px auto;
@@ -59,36 +58,38 @@ const GlobalScope = createGlobalStyle`
       width: 60vw;
     }
   }
-`
+`;
 const AppWrapper = styled.div`
   text-align: center;
-`
+`;
 const Footer = styled.h2`
   color: #aba7a7;
   cursor: pointer;
   font-size: 1.5em;
   width: 100vw;
   padding-bottom: 10px;
-`
+`;
 class App extends Component {
   render() {
     return (
       <AppWrapper>
         <GlobalScope />
-        <Nav history={this.props.history}/>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/cv" component={CV} />
-            <Route path="/login" component={Login} />
-            <Route path="/add" component={AddArticle} />
-            <Route path="/publications" component={Publications} />
-            <Route path="/articles" render={(props) => (
-              <ArticleHub {...props} />
-            )} />
-            <Route path="/:id" component={SingleArticle} />
-          </Switch>
-        <Footer as="a" href="http://lara-potjewyd.surge.sh/" target="_blank">{this.props.token !== ''? 'Website created by the best sister ever!' : 'Website created by Lara Potjewyd'}</Footer>
+        <Nav history={this.props.history} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/cv" component={CV} />
+          <Route path="/login" component={Login} />
+          <Route path="/add" component={AddArticle} />
+          <Route path="/publications" component={Publications} />
+          <Route path="/articles" render={props => <ArticleHub {...props} />} />
+          <Route path="/:id" component={SingleArticle} />
+        </Switch>
+        <Footer as="a" href="http://lara-potjewyd.surge.sh/" target="_blank">
+          {this.props.token !== ""
+            ? "Website created by the best sister ever!"
+            : "Website created by Lara Potjewyd"}
+        </Footer>
       </AppWrapper>
     );
   }

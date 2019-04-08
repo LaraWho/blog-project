@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { withState } from "../MyState";
 
 const Wrapper = styled.div`
@@ -12,6 +12,14 @@ const Wrapper = styled.div`
   height: 10vh;
   width: 100vw;
   overflow-x: hidden;
+  @media (max-width: 800px) {
+    overflow-y: hidden;
+  }
+  .fa-flask::before {
+    @media (max-width: 400px) {
+      display: none;
+    }
+  }
 `;
 
 const DropDown = styled(Wrapper)`
@@ -35,9 +43,10 @@ const Header = styled.h1`
   :hover {
     opacity: 0.5;
   }
-  /* @media (min-width: 500px) {
-    width: 70vw;
-  } */
+
+  @media (max-width: 400px) {
+    text-align: right;
+  }
 `;
 
 const Button = styled(Header)`
@@ -47,17 +56,19 @@ const Button = styled(Header)`
   font-weight: 400;
   position: relative;
   margin: 10px;
+  text-align: right;
   @media (min-width: 800px) {
     position: unset;
   }
 `;
 
 const NavButtons = styled.div`
-  display: ${props => (props.isOpen ? "flex" : "none")};
+  /* display: flex;
   flex-direction: column;
   justify-content: end;
-  align-items: center;
-  height: ${props => (props.isOpen ? "100vh" : "0vh")};
+  align-items: center; */
+  visibility: ${props => (props.isOpen ? "visible" : "hidden")};
+  height: ${props => (props.isOpen ? "90vh" : "0vh")};
   width: 100vw;
   right: 0px;
   top: 10vh;
@@ -65,7 +76,6 @@ const NavButtons = styled.div`
   position: ${props => (props.isOpen ? "absolute" : "unset")};
   opacity: ${props => (props.isOpen ? "1" : "0")};
   background-color: #333333;
-  filter: drop-shadow(0px 2px 2px #6d6c6c);
   z-index: 6;
   transition: height 500ms ease;
 
@@ -79,7 +89,8 @@ const NavButtons = styled.div`
     height: 10vh;
     opacity: 1;
     position: unset;
-    filter: none;
+    padding: unset;
+    visibility: visible;
   }
 `;
 
@@ -94,6 +105,9 @@ const HamburgerWrapper = styled.div`
   :hover {
     opacity: 0.6;
   }
+  @media (min-width: 800px) {
+    display: none;
+  }
 `;
 const Hamburger = styled.div`
   width: 35px;
@@ -101,6 +115,7 @@ const Hamburger = styled.div`
   background-color: #d9d9d9;
   border-radius: 2px;
   margin: 2.5px;
+  cursor: pointer;
   transition: all 500ms ease;
 
   @media (min-width: 800px) {
@@ -113,7 +128,7 @@ const Line1 = styled(Hamburger)`
   transform: ${props =>
     props.isOpen
       ? "rotate(45deg) translateY(-8px) translateX(4px)"
-      : "rotate(0deg) translateY(00px)"};
+      : "rotate(0deg) translateY(0px) translateX(0px)"};
 `;
 const Line2 = styled(Hamburger)`
   transition: all 500ms ease;
@@ -126,7 +141,7 @@ const Line3 = styled(Hamburger)`
   transform: ${props =>
     props.isOpen
       ? "rotate(-45deg) translateY(8px) translateX(2px)"
-      : "rotate(0deg) translate(0px, 0px)"};
+      : "rotate(0deg) translateY(0px) translateX(0px)"};
 `;
 
 class Nav extends Component {
@@ -177,11 +192,6 @@ class Nav extends Component {
         </Header>
         {this.props.token !== "" ? (
           <DropDown>
-            <HamburgerWrapper onClick={this.openMenu}>
-              <Line1 isOpen={this.state.isOpen} />
-              <Line2 isOpen={this.state.isOpen} />
-              <Line3 isOpen={this.state.isOpen} />
-            </HamburgerWrapper>
             <NavButtons isOpen={this.state.isOpen}>
               <Button onClick={() => this.props.history.push("/articles")}>
                 Articles
@@ -194,14 +204,14 @@ class Nav extends Component {
               </Button>
               <Button onClick={this.logout}>Logout</Button>
             </NavButtons>
-          </DropDown>
-        ) : (
-          <DropDown>
             <HamburgerWrapper onClick={this.openMenu}>
               <Line1 isOpen={this.state.isOpen} />
               <Line2 isOpen={this.state.isOpen} />
               <Line3 isOpen={this.state.isOpen} />
             </HamburgerWrapper>
+          </DropDown>
+        ) : (
+          <DropDown>
             <NavButtons isOpen={this.state.isOpen}>
               <Button onClick={() => this.props.history.push("/articles")}>
                 Articles
@@ -214,6 +224,11 @@ class Nav extends Component {
               </Button>
               <Button onClick={() => this.props.history.push("/cv")}>CV</Button>
             </NavButtons>
+            <HamburgerWrapper onClick={this.openMenu}>
+              <Line1 isOpen={this.state.isOpen} />
+              <Line2 isOpen={this.state.isOpen} />
+              <Line3 isOpen={this.state.isOpen} />
+            </HamburgerWrapper>
           </DropDown>
         )}
       </Wrapper>

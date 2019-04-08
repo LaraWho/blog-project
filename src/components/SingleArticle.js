@@ -11,18 +11,14 @@ const SingleArticleWrapper = styled.div`
   flex-direction: column;
 `;
 const ArticleHeader = styled.h1`
-  font-size: 3em;
+  font-size: 2.5em;
   margin: 0;
-  padding: 0.2em;
-  background-color: rgba(109, 108, 108, 0.6);
-  color: #fff;
-  width: 100vw;
+  padding: 1em;
+  color: #444;
+  width: 80vw;
   @media (min-width: 600px) {
-    font-size: 2em;
-    color: #444;
-    background-color: unset;
+    font-size: 3em;
     padding-top: 1em;
-    width: 80vw;
   }
 `;
 const ArticleImage = styled.img`

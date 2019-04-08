@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withState } from "../MyState";
 import styled from "styled-components";
-import Article from "./Article";
+import Thumbnail from "./Thumbnail";
 
 const ArticleWrapper = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ class ArticleList extends Component {
       .reverse()
       .map(article => {
         return (
-          <Article
+          <Thumbnail
             key={article._id}
             article={article}
             history={this.props.history}

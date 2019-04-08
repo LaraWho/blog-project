@@ -25,13 +25,19 @@ const GlobalScope = createGlobalStyle`
   h1, h2 {
     font-family: 'Muli', sans-serif;
   }
+  h1 {
+    color: #4e4b4b;
+  }
+  h2 {
+    color: #6d6c6c;
+  }
   p {
     line-height: 1.25em;
     font-family: 'Open Sans', sans-serif;
   }
   a {
     text-decoration: none;
-    color: #333;
+    color: #6d6c6c;
     font-family: 'Muli', sans-serif;
     font-weight: 600;
     text-align: left;
@@ -64,10 +70,14 @@ const AppWrapper = styled.div`
 `;
 const Footer = styled.h2`
   color: #aba7a7;
+  font-size: 1em;
   cursor: pointer;
-  font-size: 1.5em;
-  width: 100vw;
+  width: 80vw;
+  margin: auto;
   padding-bottom: 10px;
+  @media (min-width: 600px) {
+    font-size: 1.25em;
+  }
 `;
 class App extends Component {
   render() {

@@ -2,13 +2,30 @@ import React, { Component } from "react";
 import { withState } from "../MyState";
 import styled from "styled-components";
 
-const Link = styled.a`
-  /* text-align: left; */
+const Wrapper = styled.div`
+  text-align: left;
   width: 80vw;
   margin: auto;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  padding: ${props => props.padding || "0"};
+`;
+const ContentWrapper = styled(Wrapper)`
+  padding: 1em 0;
+`;
+const Link = styled.a`
+  text-decoration: underline;
   font-family: "Open Sans", sans-serif;
 `;
-const Header = styled.h1``;
+const Header = styled.h1`
+  margin-top: 2em;
+  margin-bottom: 0;
+  text-align: left;
+`;
+const SubTitle = styled.h2`
+  text-align: left;
+`;
 class Publications extends Component {
   componentDidMount() {
     if (this.props.articles === undefined || this.props.articles.length === 0) {
@@ -30,11 +47,11 @@ class Publications extends Component {
     const articleTitleByPublisher = Object.entries(publisherDictionary).map(
       publisherArticleArray => {
         return (
-          <div key={publisherArticleArray[0]}>
-            <Header>{publisherArticleArray[0]}</Header>
+          <ContentWrapper key={publisherArticleArray[0]}>
+            <SubTitle>{publisherArticleArray[0]}</SubTitle>
             {publisherArticleArray[1].map(article => {
               return (
-                <div>
+                <Wrapper padding={"0.25em 0"}>
                   <Link
                     key={article._id}
                     href={article.link}
@@ -44,15 +61,20 @@ class Publications extends Component {
                     {article.title}
                   </Link>
                   <br />
-                </div>
+                </Wrapper>
               );
             })}
-          </div>
+          </ContentWrapper>
         );
       }
     );
 
-    return <div>{articleTitleByPublisher}</div>;
+    return (
+      <Wrapper>
+        <Header>List of Written Work</Header>
+        {articleTitleByPublisher}
+      </Wrapper>
+    );
   }
 }
 

@@ -57,12 +57,14 @@ const Button = styled(Header)`
   position: relative;
   margin: 10px;
   text-align: right;
+
   @media (min-width: 800px) {
     position: unset;
   }
 `;
 
 const NavButtons = styled.div`
+  transition: height 500ms ease;
   /* display: flex;
   flex-direction: column;
   justify-content: end;
@@ -77,7 +79,6 @@ const NavButtons = styled.div`
   opacity: ${props => (props.isOpen ? "1" : "0")};
   background-color: #333333;
   z-index: 6;
-  transition: height 500ms ease;
 
   @media (min-width: 800px) {
     display: flex;
@@ -143,7 +144,6 @@ const Line3 = styled(Hamburger)`
       ? "rotate(-45deg) translateY(8px) translateX(2px)"
       : "rotate(0deg) translateY(0px) translateX(0px)"};
 `;
-
 class Nav extends Component {
   constructor(props) {
     super(props);

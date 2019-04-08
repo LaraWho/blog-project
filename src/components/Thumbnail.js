@@ -16,8 +16,6 @@ const Article = props => {
     position: relative;
   `;
   const ArticleHeader = styled.h2`
-    /* position: absolute;
-    z-index: 5; */
     background-color: rgba(109, 108, 108, 0.9);
     color: #fff;
     font-weight: 400;

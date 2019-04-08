@@ -258,6 +258,7 @@ class AddArticle extends Component {
               <Option value="RegMedNet">RegMedNet</Option>
               <Option value="3DMedNet">3DMedNet</Option>
               <Option value="Reliawire">Reliawire</Option>
+              <Option value="TheSignalMag">TheSignalMag</Option>
             </Select>
             {/* <Input type="text" name="publisher" value={publisher} onChange={this.handleInputChange} required/> */}
             <InputText>Content</InputText>

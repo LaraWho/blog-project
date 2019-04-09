@@ -64,19 +64,15 @@ const Button = styled(Header)`
 `;
 
 const NavButtons = styled.div`
-  transition: height 500ms ease;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: center; */
-  visibility: ${props => (props.isOpen ? "visible" : "hidden")};
+  transition: all 500ms ease;
   height: ${props => (props.isOpen ? "90vh" : "0vh")};
+  pointer-events: ${props => (props.isOpen ? "initial" : "none")};
+  overflow: hidden;
+  position: absolute;
   width: 100vw;
   right: 0px;
   top: 10vh;
-  padding: 2em;
-  position: ${props => (props.isOpen ? "absolute" : "unset")};
-  opacity: ${props => (props.isOpen ? "1" : "0")};
+  padding: ${props => (props.isOpen ? "2em" : "0em")};
   background-color: #333333;
   z-index: 6;
 
@@ -91,7 +87,6 @@ const NavButtons = styled.div`
     opacity: 1;
     position: unset;
     padding: unset;
-    visibility: visible;
   }
 `;
 

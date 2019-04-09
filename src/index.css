@@ -40,3 +40,20 @@ li > a {
 li > a:focus {
   outline: none;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(109, 108, 108, 0.4);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6d6c6c;
+  border-radius: 10px;
+  cursor: pointer;
+}

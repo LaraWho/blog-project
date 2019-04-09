@@ -28,21 +28,27 @@ const SubTitle = styled.h2`
 `;
 class Publications extends Component {
   componentDidMount() {
-    if (this.props.articles === undefined || this.props.articles.length === 0) {
-      this.props.getArticles();
+    if (
+      this.props.allArticles === undefined ||
+      this.props.allArticles.length === 0
+    ) {
+      this.props.getAllArticles();
     }
   }
 
   render() {
-    const publisherDictionary = this.props.articles.reduce((acc, article) => {
-      if (acc[article.publisher]) {
-        acc[article.publisher].push(article);
-        return acc;
-      } else {
-        acc[article.publisher] = [article];
-        return acc;
-      }
-    }, {});
+    const publisherDictionary = this.props.allArticles.reduce(
+      (acc, article) => {
+        if (acc[article.publisher]) {
+          acc[article.publisher].push(article);
+          return acc;
+        } else {
+          acc[article.publisher] = [article];
+          return acc;
+        }
+      },
+      {}
+    );
 
     const articleTitleByPublisher = Object.entries(publisherDictionary).map(
       publisherArticleArray => {

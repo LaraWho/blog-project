@@ -43,7 +43,7 @@ const Article = props => {
   const deleteArticle = id => {
     axios.delete(`/api/articles/${id}`).then(res => {
       console.log(res.data);
-      props.getArticles();
+      props.getAllArticles();
     });
   };
 

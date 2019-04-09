@@ -7,20 +7,47 @@ class MyState extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: [],
+      allArticles: [],
       user: JSON.parse(localStorage.getItem("user")) || {},
       token: localStorage.token || "",
       isEditing: false,
-      articleToEdit: []
+      articleToEdit: [],
+      homeArticles: [],
+      articlesToPaginate: [],
+      numberOfArticles: 0,
+      pages: 0
     };
   }
 
-  getArticles = () => {
+  getAllArticles = () => {
     axios
       .get("/api/articles")
       .then(res => {
         this.setState({
-          articles: res.data
+          allArticles: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  articlesForHomePage = () => {
+    axios.get("/api/articles/some").then(res => {
+      this.setState({
+        homeArticles: res.data
+      });
+    });
+  };
+
+  getSomeArticles = page => {
+    axios
+      .get(`/api/articles/some/${page}`)
+      .then(res => {
+        this.setState({
+          articlesToPaginate: res.data.docs,
+          numberOfArticles: res.data.total,
+          pages: res.data.pages
         });
       })
       .catch(err => {
@@ -98,7 +125,9 @@ class MyState extends Component {
 
   render() {
     const props = {
-      getArticles: this.getArticles,
+      getAllArticles: this.getAllArticles,
+      articlesForHomePage: this.articlesForHomePage,
+      getSomeArticles: this.getSomeArticles,
       saveEdit: this.saveEdit,
       editing: this.editing,
       removeEdit: this.removeEdit,

@@ -12,14 +12,63 @@ const ArticleWrapper = styled.div`
   margin-bottom: 2em;
 `;
 class ArticleList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      articleThumbnails: []
+    };
+  }
   componentDidMount() {
-    if (this.props.articles === undefined || this.props.articles.length === 0) {
-      this.props.getArticles();
+    if (
+      !this.props.displayAll &&
+      (this.props.articlesForHomePage === undefined ||
+        this.props.articlesForHomePage.length === 0)
+    ) {
+      this.props.articlesForHomePage();
+      this.setState({
+        articleThumbnails: this.props.homeArticles
+      });
     }
+    if (
+      this.props.displayAll &&
+      (this.props.articlesToPaginate === undefined ||
+        this.props.articlesToPaginate.length === 0)
+    )
+      this.props.getSomeArticles();
+    this.setState({
+      articleThumbnails: this.props.articlesToPaginate
+    });
   }
 
+  componentWillUnmount() {
+    this.removeState();
+  }
+
+  removeState = () => {
+    this.setState({
+      articleThumbnails: []
+    });
+  };
+
   render() {
-    const articleThumbnails = this.props.articles
+    // let articleThumbnails = [];
+    // if (
+    //   this.props.homeArticles.length !== 0 ||
+    //   this.props.homeArticles.length !== undefined
+    // ) {
+    //   articleThumbnails = this.props.homeArticles;
+    // } else if (
+    //   this.props.articlesToPaginate.length !== 0 ||
+    //   this.props.articlesToPaginate.length !== undefined
+    // ) {
+    //   articleThumbnails = this.props.articlesToPaginate;
+    // }
+
+    console.log(this.props.homeArticles);
+    console.log(this.state.articleThumbnails);
+    console.log(this.props.articlesToPaginate);
+
+    const mappedArticleThumbnails = this.state.articleThumbnails
       .slice(0)
       .reverse()
       .map(article => {
@@ -31,7 +80,7 @@ class ArticleList extends Component {
           />
         );
       });
-    return <ArticleWrapper>{articleThumbnails}</ArticleWrapper>;
+    return <ArticleWrapper>{mappedArticleThumbnails}</ArticleWrapper>;
   }
 }
 

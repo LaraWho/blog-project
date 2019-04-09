@@ -62,7 +62,7 @@ class SingleArticle extends Component {
 
   render() {
     const { id } = this.props.match.params;
-    const article = this.props.articles.find(el => {
+    const article = this.props.allArticles.find(el => {
       return el._id === id;
     });
 

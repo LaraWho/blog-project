@@ -69,7 +69,7 @@ class Home extends Component {
           Writer
         </SubTitle>
 
-        <ArticleList history={this.props.history} />
+        <ArticleList history={this.props.history} displayAll={false} />
 
         <LoginBtn onClick={() => this.props.history.push("/login")}>
           If you're Geoffrey, click here!

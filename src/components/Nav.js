@@ -77,6 +77,7 @@ const NavButtons = styled.div`
   z-index: 6;
 
   @media (min-width: 800px) {
+    pointer-events: initial;
     display: flex;
     justify-content: space-evenly;
     align-items: center;

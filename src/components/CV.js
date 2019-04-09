@@ -18,6 +18,7 @@ const CV = () => {
       text-align: center;
     }
   `;
+
   const BodyText = styled.p`
     color: #585858;
     text-align: left;
@@ -26,6 +27,7 @@ const CV = () => {
       margin-bottom: 2em;
     }
   `;
+
   const List = styled.ul`
     text-align: left;
   `;
@@ -47,49 +49,49 @@ const CV = () => {
       <CVTitle>Geoffrey Potjewyd</CVTitle>
       <SubTitle>Contact</SubTitle>
       <BodyText>
-        <Link href="mailto:Geoffrey.Potjewyd@postgrad.manchester.ac.uk">
-          {" "}
-          Geoffrey.Potjewyd@postgrad.manchester.ac.uk
-        </Link>
-        <br />
-        <Link href="mailto:GeoffreyP.GP@googlemail.com">
-          {" "}
-          GeoffreyP.GP@googlemail.com
-        </Link>
-        <br />
-        <Link href="https://www.linkedin.com/in/gpotjewyd" target="_blank">
-          {" "}
-          Linkedin
-        </Link>
-        <br />
         <Link
           href="https://www.researchgate.net/profile/Geoffrey_Potjewyd"
           target="_blank"
         >
           {" "}
-          ResearchGate
+          ResearchGate: Geoffrey_Potjewyd
         </Link>
+        <br />
+        <Link href="https://www.linkedin.com/in/gpotjewyd" target="_blank">
+          {" "}
+          Linkedin: GPotjewyd
+        </Link>
+        <br />
+        <Link href="https://twitter.com/Geoff3P" target="_blank">
+          {" "}
+          Twitter: @Geoff3P
+        </Link>
+        <br />
+        <Link href="/" target="_blank" />
       </BodyText>
-      <BodyText>
-        Ambitious and driven CDT Regenerative Medicine PhD Student with a wide
-        range of research skills. Currently working towards my doctorate through
-        developing 3D models of the neurovascular unit to investigate the
-        underlying mechanisms of neurovascular dysfunction and its contribution
-        to vascular dementia and Alzheimer's disease - as well as drug targets
-        to negate this; utilising cutting edge regenerative medicine
-        technologies.
-      </BodyText>
+
       <SubTitle>Education</SubTitle>
       <BodyText>
-        The University of Manchester 2016-2020 PhD EPSRC-MRC CDT in Regenerative
-        Medicine The University of Manchester 2014-2015 MRes Translational
-        Medicine - Distinction The University of Liverpool 2011-2014 BSc (Hons)
-        Pharmacology - 2:1
+        <strong>The University of Manchester (2016-2020)</strong>
+        <br />
+        PhD EPSRC-MRC CDT in Regenerative Medicine
       </BodyText>
-      <SubTitle>Awarded Funding</SubTitle>
       <BodyText>
-        EPSRC-MRC Centre for Doctoral Training Studentship 2016
+        <strong>The University of Manchester (2014-2015)</strong>
+        <br />
+        MRes Translational Medicine - Distinction
       </BodyText>
+      <BodyText>
+        <strong>The University of Liverpool (2011-2014)</strong>
+        <br />
+        BSc (Hons) Pharmacology - 2:1
+      </BodyText>
+      <BodyText>
+        <strong>Bournemouth University (2009-2011)</strong>
+        <br />
+        FdSc (Hons) Forensic Science with Forensic Archaeology - Distinction
+      </BodyText>
+
       <SubTitle>Technical Skills</SubTitle>
       <List>
         <ListItem>Scientific writing and presenting</ListItem>{" "}
@@ -109,157 +111,219 @@ const CV = () => {
       </List>
       <SubTitle>Research Experience</SubTitle>
       <BodyText>
-        CDT in Regenerative Medicine PhD Project Developing 3D cell models of
-        the neurovascular unit (NVU) to probe the mechanisms underlying vascular
-        dementia 09/2016-09/2020 Developing tissue engineered 3D NVU models
-        through utilising bioinks, 3D-bioprinting & cells from immortalised
-        lines & patient derived stem cells.
+        <strong>CDT in Regenerative Medicine PhD Project (2016-2020)</strong>
         <br />
+        <strong>
+          Developing 3D-cell models of the neurovascular unit (NVU) to
+          investigate mechanisms of neurovascular dysfunction in dementia.
+        </strong>
         <br />
-        IOP Publishing – MedicalPhysicsWeb.org Scientific Communications Writer
-        06/2017-Present Writing scientific news articles for
-        MedicalPhysicsWeb.org and PhysicsWorld.com on recently published
-        research in medical physics, biophysics and bioengineering. Role
-        includes reviewing articles written by fellow student contributors.
-        Primarily producing articles on biofabrication (3D-bioprinting &
-        biomaterials).
-        <br />
-        <br />
-        VWR – Global Cell Bank Research Technician 11/2015-09/2016 Research
-        technician in the AstraZeneca (AZ) Global Cell Bank (GCB) team. The GCB
-        team comprises both VWR and AZ staff that work closely with a range of
-        customers, supporting all cell based assays across the drug discovery
-        and development pipeline. Developing and executing a methodology for
-        testing the impact of temperature fluctuations on cell viability;
-        project to qualify a new vapour phase liquid nitrogen tank.
-        <br />
-        <br />
-        MRes Translational Medicine Project 09/2014-08/2015 Research project and
-        literature review: L-β-N-methylamino-alanine (BMAA) induced cellular
-        toxicity. A project investigating a novel mechanism of pathology from
-        metabolic activation of BMAA resulting in production of chemically
-        reactive intermediates that can induce DNA damage and cellular toxicity.
-        Cellular and blood brain barrier transporters of BMAA and metabolites
-        were also investigated. Translational impact to neurodegenerative
-        diseases and cancer research. Environmentally produced amino acid BMAA
-        has been strongly associated with neurodegenerative diseases Amyotrophic
-        Lateral Sclerosis, Alzheimer's disease, and Parkinson's disease.
-        <br />
-        <br />
-        BSc (Hons) Pharmacology Dissertation Projects 09/2013-05/2014 Literature
-        review: - Amyloid Vs Tau: Which represents the best target for treatment
-        or prevention of Alzheimer’s Disease? Laboratory research project: - Use
-        of a novel in vitro reporter assay to assess the activation of Nrf2 by
-        chemotherapeutic agents.
-        <br />
-        <br />
-        The University of Bath, Department of Pharmacy and Pharmacology
-        06/2010-08/2010 Research into the pharmacology of opioid receptors and
-        anxiolytics. Additional research experience was gained from assisting in
-        the animal house.
-        <br />
-        <br />
-        CDT in Regenerative Medicine PhD Project Developing 3D cell models of
-        the neurovascular unit (NVU) to probe the mechanisms underlying vascular
-        dementia 09/2016-09/2020 Developing tissue engineered 3D NVU models
-        through utilising bioinks, 3D-bioprinting & cells from immortalised
-        lines & patient derived stem cells.
-        <br />
-        <br />
-        IOP Publishing – MedicalPhysicsWeb.org Scientific Communications Writer
-        06/2017-Present Writing scientific news articles for
-        MedicalPhysicsWeb.org and PhysicsWorld.com on recently published
-        research in medical physics, biophysics and bioengineering. Role
-        includes reviewing articles written by fellow student contributors.
-        Primarily producing articles on biofabrication (3D-bioprinting &
-        biomaterials).
-        <br />
-        <br />
-        VWR – Global Cell Bank Research Technician 11/2015-09/2016 Research
-        technician in the AstraZeneca (AZ) Global Cell Bank (GCB) team. The GCB
-        team comprises both VWR and AZ staff that work closely with a range of
-        customers, supporting all cell based assays across the drug discovery
-        and development pipeline. Developing and executing a methodology for
-        testing the impact of temperature fluctuations on cell viability;
-        project to qualify a new vapour phase liquid nitrogen tank.
-        <br />
-        <br />
-        MRes Translational Medicine Project 09/2014-08/2015 Research project and
-        literature review: L-β-N-methylamino-alanine (BMAA) induced cellular
-        toxicity. A project investigating a novel mechanism of pathology from
-        metabolic activation of BMAA resulting in production of chemically
-        reactive intermediates that can induce DNA damage and cellular toxicity.
-        Cellular and blood brain barrier transporters of BMAA and metabolites
-        were also investigated. Translational impact to neurodegenerative
-        diseases and cancer research. Environmentally produced amino acid BMAA
-        has been strongly associated with neurodegenerative diseases Amyotrophic
-        Lateral Sclerosis, Alzheimer's disease, and Parkinson's disease.
-        <br />
-        <br />
-        BSc (Hons) Pharmacology Dissertation Projects 09/2013-05/2014 Literature
-        review: - Amyloid Vs Tau: Which represents the best target for treatment
-        or prevention of Alzheimer’s Disease? Laboratory research project: - Use
-        of a novel in vitro reporter assay to assess the activation of Nrf2 by
-        chemotherapeutic agents.
-        <br />
-        <br />
-        The University of Bath, Department of Pharmacy and Pharmacology
-        06/2010-08/2010 Research into the pharmacology of opioid receptors and
-        anxiolytics. Additional research experience was gained from assisting in
-        the animal house.
+        Tissue engineering NVU models through utilising 3D biomaterials,
+        bioprinting & patient derived stem cell lines. Using 3D-cell models to
+        decipher cellular, molecular & functional changes in Alzheimer’s disease
+        & other dementias.
       </BodyText>
-      <SubTitle>Volunteering and Public Engagement</SubTitle>
       <BodyText>
-        Manchester Museum Body Experience 2017 Dementia Scientist Teaching
-        families about Alzheimer’s disease and dementia; using brain slices,
-        Lego neurons, Lego amyloid-beta plaques, and Lego tau tangles.
+        <strong>VWR/AZ – Global Cell Bank Research Technician</strong>
         <br />
-        <br />
-        Manchester Museum Stem Cell Scientist Teaching college students about
-        stem cells and applications.
-        <br />
-        <br />
-        Aim Higher Student Mentor Mentoring students studying for their GCSEs
+        Research technician in the AstraZeneca (AZ) Global Cell Bank (GCB) team.
+        Working closely with a range of customers, supporting all cell based
+        assays across the drug discovery and development pipeline.
       </BodyText>
-      <SubTitle>Select Non-Academic Articles</SubTitle>
       <BodyText>
-        Drop-on-demand bioinks foster angiogenesis -{" "}
-        <Link
-          href="http://medicalphysicsweb.org/cws/article/research/69987"
-          target="_blank"
-        >
-          MedicalPhysicsWeb
-        </Link>
+        <strong>MRes Translational Medicine Project</strong>
         <br />
-        Shining a light on amyloid-β peptide binding sites -{" "}
-        <Link
-          href="http://medicalphysicsweb.org/cws/article/research/70325"
-          target="_blank"
-        >
-          MedicalPhysicsWeb
-        </Link>
+        <strong>
+          Research project and literature review: L-β-N-methylamino-alanine
+          (BMAA) induced cellular toxicity.
+        </strong>
         <br />
-        Altered gut bacteria linked to Alzheimer’s disease –{" "}
-        <Link
-          href="https://reliawire.com/gut-bacteria-alzheimers/"
-          target="_blank"
-        >
-          ReliaWire
-        </Link>
-        <br />
-        <br />
-        An extensive non-academic publications list is available on my{" "}
-        <Link href="https://www.linkedin.com/in/gpotjewyd" target="_blank">
-          Linkedin
-        </Link>{" "}
-        profile
+        Investigating a novel mechanism of pathology: metabolic activation of
+        BMAA results in a DNA damaging intermediate that is toxic to neuron-like
+        cells. Cellular & blood brain barrier transporters of BMAA & metabolites
+        were also investigated. Research with impact for neurodegeneration &
+        cancer research.
       </BodyText>
+      <BodyText>
+        <strong>BSc (Hons) Pharmacology Dissertation Projects</strong>
+        <br />
+        <strong>Literature review:</strong> Amyloid vs Tau: Which represents the
+        best target for treatment or prevention of Alzheimer’s Disease?
+        <br />
+        <strong>Laboratory research project:</strong> - Use of a novel in vitro
+        reporter assay to assess the activation of Nrf2 by chemotherapeutic
+        agents.
+      </BodyText>
+      <BodyText>
+        <strong>
+          The University of Bath, Department of Pharmacy and Pharmacology{" "}
+        </strong>
+        <br />
+        Research into the pharmacology of opioid receptors and anxiolytics.
+        Additional research experience was gained from assisting in the animal
+        house.
+      </BodyText>
+
+      <SubTitle>Science Writing Experience</SubTitle>
+      <BodyText>
+        <strong>
+          Institute of Physics (IOP) Publishing:{" "}
+          <Link href="https://physicsworld.com/author/geoffrey-potjewyd/">
+            PhysicsWorld.com
+          </Link>{" "}
+          Science Writer (2017- Present)
+        </strong>
+        <br />
+        <Link href="https://physicsworld.com/author/geoffrey-potjewyd/">
+          Author Profile
+        </Link>
+        <br />
+        Writing & reviewing science articles for the medical physics section of
+        PhysicsWorld.com on published medical physics & bioengineering research.
+        Position included a science journalism training day at IOP Publishing
+        headquarters, as well as continued support.
+      </BodyText>
+      <BodyText>
+        <strong>Freelance Science Writer (2017- Present)</strong>
+        <br />
+        Writing science articles aimed at both lay and scientific audiences
+        across neuroscience, biotechnology & regenerative medicine related
+        areas.
+        <br />
+        Selected publications:
+      </BodyText>
+      <List>
+        <ListItem>
+          Altered gut bacteria linked to Alzheimer’s disease -{" "}
+          <Link href="https://reliawire.com/gut-bacteria-alzheimers/">
+            ReliaWire.com
+          </Link>
+        </ListItem>
+        <ListItem>
+          Group develops a novel inkjet 3D bioprinting method -{" "}
+          <Link href="https://www.3dmednet.com/users/14012-3dmednet/posts/29176-group-develops-a-novel-inkjet-3d-bioprinting-method">
+            3DMedNet.com
+          </Link>
+        </ListItem>
+        <ListItem>
+          Tofu in a fibroblast marinade -{" "}
+          <Link href="https://www.regmednet.com/users/3641-regmednet/posts/32046-tofu-in-a-fibroblast-marinade">
+            RegMedNet.com
+          </Link>
+        </ListItem>
+      </List>
+      <BodyText>
+        <i>Further writing samples available upon request</i>
+      </BodyText>
+
+      <SubTitle>Science Communication</SubTitle>
+      <BodyText>
+        <strong>
+          Graduate Teaching Assistant – University of Manchester (2016- Present)
+        </strong>
+        <br />
+        Teaching both life sciences & mechanical engineering students.
+      </BodyText>
+      <BodyText>
+        <strong>
+          <br />
+          Manchester Museum Body Experience Dementia Scientist (2017)
+        </strong>
+        Teaching families about Alzheimer’s disease & dementia; Lego neurons
+      </BodyText>
+      <BodyText>
+        <strong>Manchester Museum Stem Cell Scientist (2017)</strong>
+        Teaching college students about stem cells & their applications in
+        research.
+      </BodyText>
+      <BodyText>
+        <strong>Aim Higher Student Mentor (2010-2011)</strong>
+        <br />
+        Mentoring students studying for their GCSEs
+      </BodyText>
+
+      <SubTitle>Relevant Experience</SubTitle>
+      <BodyText>
+        <strong>PhD Pigeon: Scientific Consultant (2017-2019)</strong>
+        <br />
+        Providing desk research for clients of PhD Pigeon; working to find
+        solutions for the scientific problems facing pharmaceutical companies.
+      </BodyText>
+      <BodyText>
+        <strong>
+          Clinical Research Facility Placement – NIHR Clinical Research Network
+          (2018)
+        </strong>
+        <br />
+        Shadowing senior clinical trial physicians & coordinators administrating
+        drug trials & assessing patient outcomes for a variety of conditions.
+      </BodyText>
+      <BodyText>
+        <strong>
+          Innovation & Commercialisation of Research Course - University of
+          Manchester (2018)
+        </strong>
+      </BodyText>
+      <BodyText>
+        <strong>
+          Bioreactor & Grown Environments for Tissue Engineering Course – Keele
+          University (2017)
+        </strong>
+      </BodyText>
+
+      <SubTitle>Awards and Funding</SubTitle>
+      <BodyText>
+        EPSRC-MRC Centre for Doctoral Training Studentship (2016-2020)
+        <br />
+        PrimerDesign Gold Level Student Scholarship (2018-2020)
+      </BodyText>
+
+      <SubTitle>Selected Conference and Symposium Presentations</SubTitle>
+      <BodyText>
+        <strong>
+          Manchester Regenerative Medicine Network (MaRMN) Syposium
+        </strong>{" "}
+        – Poster, February 2018/19
+      </BodyText>
+      <BodyText>
+        <strong>Alzheimer’s Research UK (ARUK) Conference</strong> – Poster,
+        March 2018
+      </BodyText>
+      <BodyText>
+        <strong>ARUK North-West Early Career Symposium</strong> – Oral
+        Presentation, March 2018
+      </BodyText>
+      <BodyText>
+        <strong>
+          Royal Society of Chemistry (RSC) Biomaterials Conference
+        </strong>{" "}
+        – Presentation and poster, January 2018
+      </BodyText>
+      <BodyText>
+        <strong>
+          Centre for Doctoral Training (CDT) in Regenerative Medicine Conference
+        </strong>{" "}
+        – Poster, 2017/18
+      </BodyText>
+
       <SubTitle>Academic Publications</SubTitle>
       <BodyText>
-        Potjewyd, G., Day, P.J., Shangula, S., Margison, G.P., Povey, A.C.,
-        2017. L-β-N- methylamino- l -alanine (BMAA) nitrosation generates a
-        cytotoxic DNA damaging alkylating agent: An unexplored mechanism for
-        neurodegenerative disease. Neurotoxicology 59, 105–109.
+        Rajkovic O, <strong>Potjewyd G</strong>, Pinteaux E. Regenerative
+        medicine therapies for targeting neuroinflammation after stroke. Front
+        Neurol (2018) 9:734. doi:10.3389/FNEUR.2018.00734
+        <br />
+        <br />
+        <strong>Potjewyd G</strong>, Moxon S, Wang T, Domingos M, Hooper NM.
+        Tissue Engineering 3D Neurovascular Units: A Biomaterials and
+        Bioprinting Perspective. Trends Biotechnol (2018) 36:457–472.
+        doi:10.1016/j.tibtech.2018.01.003
+        <br />
+        <br />
+        <strong>Potjewyd G</strong>, Day PJ, Shangula S, Margison GP, Povey AC.
+        L-β-N-methylamino-L-alanine (BMAA) nitrosation generates a cytotoxic DNA
+        damaging alkylating agent: An unexplored mechanism for neurodegenerative
+        disease. Neurotoxicology (2017) 59:105–109.
+        doi:10.1016/j.neuro.2017.01.007
       </BodyText>
     </CVWrapper>
   );

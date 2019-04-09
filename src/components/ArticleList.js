@@ -27,7 +27,6 @@ class ArticleList extends Component {
   };
 
   render() {
-    console.log(this.state);
     let articleThumbnails = [];
     if (this.props.homeDisplay) {
       articleThumbnails = this.props.homeArticles;

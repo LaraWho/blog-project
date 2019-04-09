@@ -19,10 +19,12 @@ class ArticleHub extends Component {
   }
 
   componentWillMount() {
+    window.scrollTo(0, 0);
     this.getSomeArticles();
   }
 
   getSomeArticles = page => {
+    window.scrollTo(0, 0);
     axios
       .get(`/api/articles/some/${page}`)
       .then(res => {

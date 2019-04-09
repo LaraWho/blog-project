@@ -48,6 +48,13 @@ const GlobalScope = createGlobalStyle`
       opacity: 0.5;
     }
   }
+  .fa-caret-square-up {
+    transition: all .5s ease;
+  font-size: 2em;
+  }
+  .fa-caret-square-up:hover {
+    opacity: 0.5;
+  }
   input {
     font-family: 'Open Sans', sans-serif;
     padding: 0.75em;
@@ -72,14 +79,28 @@ const Footer = styled.h2`
   color: #aba7a7;
   font-size: 1em;
   cursor: pointer;
-  width: 80vw;
-  margin: auto;
+  width: auto;
+  padding-left: 3.5em;
   padding-bottom: 10px;
   @media (min-width: 600px) {
     font-size: 1.25em;
   }
 `;
+const ScrollUp = styled(Footer)`
+  padding-right: 2em;
+  padding-left: 0em;
+`;
+
+const FooterWrapper = styled(AppWrapper)`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
 class App extends Component {
+  scrollUp = () => {
+    window.scrollTo(0, 0);
+  };
+
   render() {
     return (
       <AppWrapper>
@@ -95,11 +116,16 @@ class App extends Component {
           <Route path="/articles" render={props => <ArticleHub {...props} />} />
           <Route path="/:id" component={SingleArticle} />
         </Switch>
-        <Footer as="a" href="http://lara-potjewyd.surge.sh/" target="_blank">
-          {this.props.token !== ""
-            ? "Website created by the best sister ever!"
-            : "Website created by Lara Potjewyd"}
-        </Footer>
+        <FooterWrapper>
+          <Footer as="a" href="http://lara-potjewyd.surge.sh/" target="_blank">
+            {this.props.token !== ""
+              ? "Website created by the best sister ever!"
+              : "Website created by Lara Potjewyd"}
+          </Footer>
+          <ScrollUp onClick={this.scrollUp}>
+            <i className="fas fa-caret-square-up" />
+          </ScrollUp>
+        </FooterWrapper>
       </AppWrapper>
     );
   }

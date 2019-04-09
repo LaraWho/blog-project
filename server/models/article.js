@@ -21,7 +21,8 @@ const ArticleSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    required: true
   },
   link: {
     type: String,

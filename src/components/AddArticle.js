@@ -175,7 +175,7 @@ class AddArticle extends Component {
           title: "Saved!"
         });
         setTimeout(() => {
-          this.props.history.push("/");
+          this.props.history.push("/articles");
         }, 1500);
       })
       .catch(err => {
@@ -190,7 +190,7 @@ class AddArticle extends Component {
       title: "Saved!"
     });
     setTimeout(() => {
-      this.props.history.push("/");
+      this.props.history.push("/articles");
     }, 1500);
   };
 
@@ -209,7 +209,7 @@ class AddArticle extends Component {
       <Editor>
         {this.props.token !== "" ? (
           <Editor>
-            <InputText>Title</InputText>
+            <InputText>Title (Required)</InputText>
             <Input
               type="text"
               name="title"
@@ -231,7 +231,7 @@ class AddArticle extends Component {
               value={imageText}
               onChange={this.handleInputChange}
             />
-            <InputText>Publication Link</InputText>
+            <InputText>Publication Link (Required)</InputText>
             <Input
               type="text"
               name="link"
@@ -239,7 +239,7 @@ class AddArticle extends Component {
               onChange={this.handleInputChange}
               required
             />
-            <InputText>Date Published</InputText>
+            <InputText>Date Published (Required)</InputText>
             <Input
               type="text"
               name="date"
@@ -247,7 +247,7 @@ class AddArticle extends Component {
               onChange={this.handleInputChange}
               required
             />
-            <InputText>Place Published</InputText>
+            <InputText>Place Published (Required)</InputText>
             <Select
               name="publisher"
               value={publisher}
@@ -261,7 +261,7 @@ class AddArticle extends Component {
               <Option value="TheSignalMag">TheSignalMag</Option>
             </Select>
             {/* <Input type="text" name="publisher" value={publisher} onChange={this.handleInputChange} required/> */}
-            <InputText>Content</InputText>
+            <InputText>Content (Required)</InputText>
             <div
               className="text-editor"
               style={{ width: "80vw", margin: "1em auto" }}

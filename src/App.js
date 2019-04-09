@@ -123,7 +123,7 @@ class App extends Component {
               : "Website created by Lara Potjewyd"}
           </Footer>
           <ScrollUp onClick={this.scrollUp}>
-            <i className="fas fa-caret-square-up" />
+            <i className="far fa-caret-square-up" />
           </ScrollUp>
         </FooterWrapper>
       </AppWrapper>

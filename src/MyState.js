@@ -28,12 +28,30 @@ class MyState extends Component {
       });
   };
 
+  deleteArticle = id => {
+    console.log(id);
+    const toKeep = this.state.allArticles.filter(article => {
+      return article._id !== id;
+    });
+    console.log(toKeep);
+    axios.delete(`/api/articles/${id}`).then(
+      res => {
+        this.setState(prevState => ({
+          allArticles: [...toKeep]
+        }));
+      },
+      () => {
+        console.log(this.state.allArticles);
+      }
+    );
+  };
+
   saveEdit = (_id, article) => {
     axios
       .put(`/api/articles/${_id}`, article)
       .then(res => {
         this.setState(prevState => ({
-          articles: [res.data, ...prevState.articles],
+          allArticles: [res.data, ...prevState.allArticles],
           isEditing: false
         }));
       })
@@ -99,6 +117,7 @@ class MyState extends Component {
   render() {
     const props = {
       getAllArticles: this.getAllArticles,
+      deleteArticle: this.deleteArticle,
       saveEdit: this.saveEdit,
       editing: this.editing,
       removeEdit: this.removeEdit,

@@ -54,7 +54,7 @@ articleRoutes
       if (err) return res.status(500).send(err);
       return res.status(200).send(articles);
     })
-      .sort({ date: "asc" })
+      .sort({ date: -1 })
       .limit(6);
   });
 
@@ -63,7 +63,7 @@ articleRoutes
 
   .get((req, res) => {
     const options = {
-      sort: { date: "asc" },
+      sort: { date: -1 },
       lean: true,
       page: req.params.page,
       limit: 8

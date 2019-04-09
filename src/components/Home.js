@@ -3,6 +3,7 @@ import styled from "styled-components";
 import brain from "../brain3.svg";
 import ArticleList from "./ArticleList";
 import axios from "axios";
+import { withState } from "../MyState";
 
 const HomeWrapper = styled.div`
   width: 80vw;
@@ -61,6 +62,7 @@ class Home extends Component {
   componentWillMount() {
     window.scrollTo(0, 0);
     this.articlesForHomePage();
+    this.props.getAllArticles();
   }
 
   articlesForHomePage = () => {
@@ -99,4 +101,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withState(Home);

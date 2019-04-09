@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withState } from "../MyState";
 import styled from "styled-components";
 import Thumbnail from "./Thumbnail";
+import axios from "axios";
 
 const ArticleWrapper = styled.div`
   display: flex;
@@ -12,14 +13,27 @@ const ArticleWrapper = styled.div`
   margin-bottom: 2em;
 `;
 class ArticleList extends Component {
-  componentDidMount() {
-    if (this.props.articles === undefined || this.props.articles.length === 0) {
-      this.props.getArticles();
-    }
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     deleted: []
+  //   };
+  // }
+
+  deleteArticle = id => {
+    axios.delete(`/api/articles/${id}`).then(res => {
+      console.log(res.data);
+    });
+  };
 
   render() {
-    const articleThumbnails = this.props.articles
+    let articleThumbnails = [];
+    if (this.props.homeDisplay) {
+      articleThumbnails = this.props.homeArticles;
+    } else if (this.props.hubDisplay) {
+      articleThumbnails = this.props.hubArticles;
+    }
+    const mappedArticleThumbnails = articleThumbnails
       .slice(0)
       .reverse()
       .map(article => {
@@ -28,10 +42,11 @@ class ArticleList extends Component {
             key={article._id}
             article={article}
             history={this.props.history}
+            deleteArticle={this.deleteArticle}
           />
         );
       });
-    return <ArticleWrapper>{articleThumbnails}</ArticleWrapper>;
+    return <ArticleWrapper>{mappedArticleThumbnails}</ArticleWrapper>;
   }
 }
 

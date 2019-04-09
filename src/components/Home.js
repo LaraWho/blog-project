@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import brain from "../brain3.svg";
 import ArticleList from "./ArticleList";
+import axios from "axios";
 
 const HomeWrapper = styled.div`
   width: 80vw;
@@ -51,9 +52,24 @@ const LoginBtn = styled.h2`
   }
 `;
 class Home extends Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
+  constructor(props) {
+    super(props);
+    this.state = {
+      homeArticles: []
+    };
   }
+  componentWillMount() {
+    window.scrollTo(0, 0);
+    this.articlesForHomePage();
+  }
+
+  articlesForHomePage = () => {
+    axios.get("/api/articles/some").then(res => {
+      this.setState({
+        homeArticles: res.data
+      });
+    });
+  };
 
   render() {
     return (
@@ -69,7 +85,11 @@ class Home extends Component {
           Writer
         </SubTitle>
 
-        <ArticleList history={this.props.history} />
+        <ArticleList
+          history={this.props.history}
+          homeDisplay={true}
+          homeArticles={this.state.homeArticles}
+        />
 
         <LoginBtn onClick={() => this.props.history.push("/login")}>
           If you're Geoffrey, click here!

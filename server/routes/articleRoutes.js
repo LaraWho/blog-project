@@ -9,9 +9,7 @@ articleRoutes
     Article.find((err, articles) => {
       if (err) return res.status(500).send(err);
       return res.status(200).send(articles);
-    })
-      .sort({ date: "asc" })
-      .limit(6);
+    });
   })
 
   .post((req, res) => {
@@ -30,8 +28,6 @@ articleRoutes
   .route("/:_id")
 
   .put((req, res) => {
-    console.log(req.body);
-    console.log(req.params._id);
     Article.findOneAndUpdate(
       { _id: req.params._id },
       req.body,
@@ -51,7 +47,7 @@ articleRoutes
   });
 
 articleRoutes
-  .route("/all")
+  .route("/some")
 
   .get((req, res) => {
     Article.find((err, articles) => {
@@ -59,7 +55,23 @@ articleRoutes
       return res.status(200).send(articles);
     })
       .sort({ date: "asc" })
-      .batchSize(10);
+      .limit(6);
+  });
+
+articleRoutes
+  .route("/some/:page")
+
+  .get((req, res) => {
+    const options = {
+      sort: { date: "asc" },
+      lean: true,
+      page: req.params.page,
+      limit: 8
+    };
+    Article.paginate({}, options, (err, articles) => {
+      if (err) return res.status(500).send(err);
+      return res.status(200).send(articles);
+    });
   });
 
 module.exports = articleRoutes;

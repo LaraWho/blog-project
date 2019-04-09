@@ -7,7 +7,7 @@ class MyState extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: [],
+      allArticles: [],
       user: JSON.parse(localStorage.getItem("user")) || {},
       token: localStorage.token || "",
       isEditing: false,
@@ -15,12 +15,12 @@ class MyState extends Component {
     };
   }
 
-  getArticles = () => {
+  getAllArticles = () => {
     axios
       .get("/api/articles")
       .then(res => {
         this.setState({
-          articles: res.data
+          allArticles: res.data
         });
       })
       .catch(err => {
@@ -98,7 +98,7 @@ class MyState extends Component {
 
   render() {
     const props = {
-      getArticles: this.getArticles,
+      getAllArticles: this.getAllArticles,
       saveEdit: this.saveEdit,
       editing: this.editing,
       removeEdit: this.removeEdit,

@@ -12,3 +12,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.pagination {
+  cursor: pointer;
+  padding: 1em;
+  padding-right: 4em;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: rgba(109, 108, 108, 0.8);
+}
+
+li {
+  margin: 0 1em;
+}
+li > a {
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+li > a:focus {
+  outline: none;
+}

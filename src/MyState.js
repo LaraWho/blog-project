@@ -11,11 +11,7 @@ class MyState extends Component {
       user: JSON.parse(localStorage.getItem("user")) || {},
       token: localStorage.token || "",
       isEditing: false,
-      articleToEdit: [],
-      homeArticles: [],
-      articlesToPaginate: [],
-      numberOfArticles: 0,
-      pages: 0
+      articleToEdit: []
     };
   }
 
@@ -25,29 +21,6 @@ class MyState extends Component {
       .then(res => {
         this.setState({
           allArticles: res.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  articlesForHomePage = () => {
-    axios.get("/api/articles/some").then(res => {
-      this.setState({
-        homeArticles: res.data
-      });
-    });
-  };
-
-  getSomeArticles = page => {
-    axios
-      .get(`/api/articles/some/${page}`)
-      .then(res => {
-        this.setState({
-          articlesToPaginate: res.data.docs,
-          numberOfArticles: res.data.total,
-          pages: res.data.pages
         });
       })
       .catch(err => {
@@ -126,8 +99,6 @@ class MyState extends Component {
   render() {
     const props = {
       getAllArticles: this.getAllArticles,
-      articlesForHomePage: this.articlesForHomePage,
-      getSomeArticles: this.getSomeArticles,
       saveEdit: this.saveEdit,
       editing: this.editing,
       removeEdit: this.removeEdit,

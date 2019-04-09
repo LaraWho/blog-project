@@ -57,9 +57,8 @@ class Publications extends Component {
             <SubTitle>{publisherArticleArray[0]}</SubTitle>
             {publisherArticleArray[1].map(article => {
               return (
-                <Wrapper padding={"0.25em 0"}>
+                <Wrapper padding={"0.25em 0"} key={article._id}>
                   <Link
-                    key={article._id}
                     href={article.link}
                     target="_blank"
                     rel="noopener noreferrer"

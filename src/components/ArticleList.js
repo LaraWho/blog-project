@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withState } from "../MyState";
 import styled from "styled-components";
 import Thumbnail from "./Thumbnail";
+import axios from "axios";
 
 const ArticleWrapper = styled.div`
   display: flex;
@@ -12,63 +13,28 @@ const ArticleWrapper = styled.div`
   margin-bottom: 2em;
 `;
 class ArticleList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      articleThumbnails: []
-    };
-  }
-  componentDidMount() {
-    if (
-      !this.props.displayAll &&
-      (this.props.articlesForHomePage === undefined ||
-        this.props.articlesForHomePage.length === 0)
-    ) {
-      this.props.articlesForHomePage();
-      this.setState({
-        articleThumbnails: this.props.homeArticles
-      });
-    }
-    if (
-      this.props.displayAll &&
-      (this.props.articlesToPaginate === undefined ||
-        this.props.articlesToPaginate.length === 0)
-    )
-      this.props.getSomeArticles();
-    this.setState({
-      articleThumbnails: this.props.articlesToPaginate
-    });
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     deleted: []
+  //   };
+  // }
 
-  componentWillUnmount() {
-    this.removeState();
-  }
-
-  removeState = () => {
-    this.setState({
-      articleThumbnails: []
+  deleteArticle = id => {
+    axios.delete(`/api/articles/${id}`).then(res => {
+      console.log(res.data);
     });
   };
 
   render() {
-    // let articleThumbnails = [];
-    // if (
-    //   this.props.homeArticles.length !== 0 ||
-    //   this.props.homeArticles.length !== undefined
-    // ) {
-    //   articleThumbnails = this.props.homeArticles;
-    // } else if (
-    //   this.props.articlesToPaginate.length !== 0 ||
-    //   this.props.articlesToPaginate.length !== undefined
-    // ) {
-    //   articleThumbnails = this.props.articlesToPaginate;
-    // }
-
-    console.log(this.props.homeArticles);
-    console.log(this.state.articleThumbnails);
-    console.log(this.props.articlesToPaginate);
-
-    const mappedArticleThumbnails = this.state.articleThumbnails
+    console.log(this.state);
+    let articleThumbnails = [];
+    if (this.props.homeDisplay) {
+      articleThumbnails = this.props.homeArticles;
+    } else if (this.props.hubDisplay) {
+      articleThumbnails = this.props.hubArticles;
+    }
+    const mappedArticleThumbnails = articleThumbnails
       .slice(0)
       .reverse()
       .map(article => {
@@ -77,6 +43,7 @@ class ArticleList extends Component {
             key={article._id}
             article={article}
             history={this.props.history}
+            deleteArticle={this.deleteArticle}
           />
         );
       });

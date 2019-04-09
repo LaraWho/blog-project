@@ -3,6 +3,7 @@ import ArticleList from "./ArticleList";
 import styled from "styled-components";
 import { withState } from "../MyState";
 import ReactPaginate from "react-paginate";
+import axios from "axios";
 
 const HubWrapper = styled.div`
   width: 100vw;
@@ -11,9 +12,30 @@ class ArticleHub extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      offset: 6
+      offset: 8,
+      articlesToPaginate: [],
+      pageCount: 0
     };
   }
+
+  componentWillMount() {
+    this.getSomeArticles();
+  }
+
+  getSomeArticles = page => {
+    axios
+      .get(`/api/articles/some/${page}`)
+      .then(res => {
+        this.setState({
+          articlesToPaginate: res.data.docs,
+          pageCount: res.data.pages
+          // pageCount: Math.ceil(res.data.total / res.data.limit)
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   handlePageClick = data => {
     let selected = data.selected + 1;
@@ -23,7 +45,7 @@ class ArticleHub extends Component {
         offset: offset
       },
       () => {
-        this.props.getSomeArticles(selected);
+        this.getSomeArticles(selected);
       }
     );
   };
@@ -31,13 +53,17 @@ class ArticleHub extends Component {
   render() {
     return (
       <HubWrapper>
-        <ArticleList history={this.props.history} displayAll={true} />
+        <ArticleList
+          history={this.props.history}
+          hubDisplay={true}
+          hubArticles={this.state.articlesToPaginate}
+        />
         <ReactPaginate
-          previousLabel={"previous"}
-          nextLabel={"next"}
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
           breakLabel={"..."}
           breakClassName={"break-me"}
-          pageCount={this.props.pages}
+          pageCount={this.state.pageCount}
           marginPagesDisplayed={2}
           pageRangeDisplayed={5}
           onPageChange={this.handlePageClick}

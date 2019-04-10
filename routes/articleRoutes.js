@@ -1,7 +1,6 @@
 const express = require("express");
 const articleRoutes = express.Router();
 const Article = require("../models/article");
-const Publisher = require("../models/publishers");
 
 articleRoutes
   .route("/")
@@ -22,21 +21,6 @@ articleRoutes
       });
     } else {
       res.send("Cannot add it!");
-    }
-  });
-
-articleRoutes
-  .route("/publisher")
-
-  .post((req, res) => {
-    if (Object.keys(req.body) !== 0) {
-      const newPub = new Publisher(req.body);
-      newPub.save(err => {
-        if (err) return res.status(500).send(err);
-        return res.status(200).send(newPub);
-      });
-    } else {
-      res.send("Cannot add the publisher");
     }
   });
 

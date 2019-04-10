@@ -30,8 +30,8 @@ const About = () => {
         <br />
         <strong>What my family thinks I do:</strong> I don’t understand but
         you’re doing great! <br />
-        <strong>What I think I do:</strong> Developing 3D models of the
-        neurovascular unit and science writing
+        <strong>What I think I do:</strong> Recreating the blood vessels of the
+        brain to research dementia and science writing.
       </Text>
       <Text>
         My name is Geoff; I am a PhD student at the University of Manchester
@@ -42,12 +42,9 @@ const About = () => {
       </Text>
       <Text>
         Alongside my research I also like to write science articles which
-        communicate the latest research in neuroscience and biofabrication
-        (NEUROFABRICATION) to scientists and science enthusiasts. The website
-        you are on now is my portfolio of these articles and also to all things
-        Geoff (Just Geoff).
+        communicate the latest research in neuroscience and biofabrication to
+        scientists and science enthusiasts.
       </Text>
-      <Text>Prone to pining over 3D-printing paraphernalia.</Text>
     </AboutWrapper>
   );
 };

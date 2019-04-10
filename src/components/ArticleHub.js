@@ -22,6 +22,7 @@ class ArticleHub extends Component {
   componentWillMount() {
     window.scrollTo(0, 0);
     this.getSomeArticles();
+    this.props.getAllArticles();
   }
 
   deleteArticle = id => {

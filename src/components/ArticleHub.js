@@ -23,6 +23,22 @@ class ArticleHub extends Component {
     this.getSomeArticles();
   }
 
+  deleteArticle = id => {
+    const toKeep = this.state.articlesToPaginate.filter(article => {
+      return article._id !== id;
+    });
+    axios.delete(`/api/articles/${id}`).then(res => {
+      this.setState(
+        {
+          articlesToPaginate: toKeep
+        },
+        () => {
+          this.getSomeArticles();
+        }
+      );
+    });
+  };
+
   getSomeArticles = page => {
     window.scrollTo(0, 0);
     axios
@@ -59,6 +75,7 @@ class ArticleHub extends Component {
           history={this.props.history}
           hubDisplay={true}
           hubArticles={this.state.articlesToPaginate}
+          deleteArticle={this.deleteArticle}
         />
         <ReactPaginate
           previousLabel={"Previous"}

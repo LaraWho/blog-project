@@ -190,7 +190,7 @@ class AddArticle extends Component {
       title: "Saved!"
     });
     setTimeout(() => {
-      this.props.history.push("/articles");
+      this.props.history.push(`/${_id}`);
     }, 1500);
   };
 

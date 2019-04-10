@@ -14,21 +14,19 @@ const ArticleHeader = styled.h1`
   font-size: 2.5em;
   margin: 0;
   padding: 1em;
-  color: #444;
+  padding-bottom: 0;
   width: 80vw;
   @media (min-width: 600px) {
     font-size: 3em;
-    padding-top: 1em;
   }
 `;
 const ArticleImage = styled.img`
   width: 100vw;
+  margin: 1em;
   @media (min-width: 600px) {
-    margin: 1em;
     width: 60vw;
   }
   @media (min-width: 1000px) {
-    margin: 1em;
     width: 50vw;
   }
 `;
@@ -38,14 +36,14 @@ const ArticleContent = styled.div`
 `;
 const ArticleSubTitle = styled.h2`
   width: 80vw;
+  margin: 0.5em 0;
   text-align: left;
-  margin-top: 20px;
-  font-size: 1.5em;
+  font-size: 1.25em;
 `;
 const ImageText = styled.p`
-  text-align: center;
+  text-align: left;
   width: 80vw;
-  margin: 1em auto;
+  margin: 0.5em auto;
   :nth-last-of-type() {
     margin-bottom: 2em;
   }
@@ -53,7 +51,7 @@ const ImageText = styled.p`
 const ArticleLink = styled(ArticleSubTitle)`
   font-family: "Muli", sans-serif;
   cursor: pointer;
-  font-size: 2em;
+  font-size: 1.5em;
 `;
 class SingleArticle extends Component {
   componentDidMount() {

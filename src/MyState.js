@@ -28,24 +28,6 @@ class MyState extends Component {
       });
   };
 
-  deleteArticle = id => {
-    console.log(id);
-    const toKeep = this.state.allArticles.filter(article => {
-      return article._id !== id;
-    });
-    console.log(toKeep);
-    axios.delete(`/api/articles/${id}`).then(
-      res => {
-        this.setState(prevState => ({
-          allArticles: [...toKeep]
-        }));
-      },
-      () => {
-        console.log(this.state.allArticles);
-      }
-    );
-  };
-
   saveEdit = (_id, article) => {
     axios
       .put(`/api/articles/${_id}`, article)

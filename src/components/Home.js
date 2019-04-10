@@ -25,7 +25,6 @@ const Brain = styled.img`
   }
 `;
 const Title = styled.h1`
-  color: #333;
   font-size: 2.75em;
   margin: 0 auto;
   @media (min-width: 450px) {
@@ -65,6 +64,22 @@ class Home extends Component {
     this.props.getAllArticles();
   }
 
+  deleteArticle = id => {
+    const toKeep = this.state.homeArticles.filter(article => {
+      return article._id !== id;
+    });
+    axios.delete(`/api/articles/${id}`).then(res => {
+      this.setState(
+        {
+          homeArticles: toKeep
+        },
+        () => {
+          this.articlesForHomePage();
+        }
+      );
+    });
+  };
+
   articlesForHomePage = () => {
     axios.get("/api/articles/some").then(res => {
       this.setState({
@@ -91,6 +106,7 @@ class Home extends Component {
           history={this.props.history}
           homeDisplay={true}
           homeArticles={this.state.homeArticles}
+          deleteArticle={this.deleteArticle}
         />
 
         <LoginBtn onClick={() => this.props.history.push("/login")}>

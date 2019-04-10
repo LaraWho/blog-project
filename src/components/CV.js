@@ -7,7 +7,13 @@ const CV = () => {
     margin: 1em auto 2em auto;
   `;
   const CVTitle = styled.h1`
-    font-size: 4em;
+    font-size: 3.5em;
+    margin-bottom: 0.25em;
+    @media (min-width: 800px) {
+      margin-top: 0;
+      margin-bottom: 0.5em;
+      padding-top: 1em;
+    }
   `;
   const SubTitle = styled.h2`
     text-align: left;

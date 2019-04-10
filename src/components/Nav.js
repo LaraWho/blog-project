@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333333;
+  background-color: #3c3c3c;
   box-shadow: 0 1px 2px #6d6c6c;
   height: 10vh;
   width: 100vw;
@@ -73,7 +73,7 @@ const NavButtons = styled.div`
   right: 0px;
   top: 10vh;
   padding: ${props => (props.isOpen ? "2em" : "0em")};
-  background-color: #333333;
+  background-color: #3c3c3c;
   z-index: 6;
 
   @media (min-width: 800px) {

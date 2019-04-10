@@ -10,12 +10,15 @@ const About = () => {
     align-items: center;
     justify-content: center;
   `;
-  const Text = styled.p`
-    color: #333;
-  `;
+  const Text = styled.p``;
   const AboutTitle = styled.h1`
-    color: #333;
     font-size: 3.5em;
+    margin-bottom: 0.25em;
+    @media (min-width: 800px) {
+      margin-top: 0;
+      margin-bottom: 0.5em;
+      padding-top: 1em;
+    }
   `;
 
   return (

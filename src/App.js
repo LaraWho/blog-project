@@ -18,7 +18,7 @@ const GlobalScope = createGlobalStyle`
   }
   body {
     margin: 0;
-    color: #333;
+    color: #4e4b4b;    
     background-color: #F2F2F2;
     overflow-x: hidden;
   }
@@ -36,7 +36,7 @@ const GlobalScope = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
   }
   a {
-    text-decoration: none;
+    text-decoration: underline;
     color: #6d6c6c;
     font-family: 'Muli', sans-serif;
     font-weight: 600;
@@ -76,6 +76,7 @@ const AppWrapper = styled.div`
   text-align: center;
 `;
 const Footer = styled.h2`
+  text-decoration: none;
   color: #aba7a7;
   font-size: 1em;
   cursor: pointer;

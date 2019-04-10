@@ -25,6 +25,7 @@ class ArticleList extends Component {
           key={article._id}
           article={article}
           history={this.props.history}
+          deleteArticle={this.props.deleteArticle}
         />
       );
     });

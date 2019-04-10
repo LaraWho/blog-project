@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const expressJWT = require("express-jwt");
-const port = 5678;
+const port = process.env.SERVER_PORT;
 const mongoose = require("mongoose");
 
 app.use(express.json());

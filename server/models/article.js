@@ -24,8 +24,7 @@ const ArticleSchema = new Schema({
     default: Date.now
   },
   link: {
-    type: String,
-    required: true
+    type: String
   },
   publisher: {
     type: String

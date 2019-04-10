@@ -42,27 +42,10 @@ const InputText = styled.h2`
     }
   }
 `;
-const Select = styled.select`
-  width: 80vw;
-  margin: auto;
-  font-family: "Open Sans", sans-serif;
-  padding: 0.75em;
-  margin: 1em;
-  width: 80vw;
-  font-size: 1em;
-  border: 2px solid #d8d8d8;
-  -webkit-transition: border 0.5s ease;
-  transition: border 0.5s ease;
-  outline: none;
-  :focus {
-    border: 2px solid #aba7a7;
-  }
-  @media (min-width: 600px) {
-    width: 60vw;
-  }
-`;
 
-const Option = styled.option``;
+const ImagePreview = styled.img`
+  width: 60vw;
+`;
 
 const Toast = sweetie.mixin({
   toast: true,
@@ -70,6 +53,7 @@ const Toast = sweetie.mixin({
   showConfirmButton: false,
   timer: 2000
 });
+
 class AddArticle extends Component {
   constructor(props) {
     super(props);
@@ -176,30 +160,19 @@ class AddArticle extends Component {
         publisher
       })
       .then(res => {
+        this.props.getAllArticles();
         Toast.fire({
           type: "success",
           title: "Saved!"
         });
         setTimeout(() => {
-          this.props.history.push("/articles");
+          this.props.history.push(`/${res.data._id}`);
         }, 1500);
       })
       .catch(err => {
         console.log(err);
       });
   };
-
-  // addPub = () => {
-  //   const { publisher } = this.state;
-  //   axios
-  //     .post("/api/articles/publisher", { publisher })
-  //     .then(res => {
-  //       console.log(res.data);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
 
   saveEdit = (_id, article) => {
     this.props.saveEdit(_id, article);
@@ -242,6 +215,7 @@ class AddArticle extends Component {
               value={imageURL}
               onChange={this.handleInputChange}
             />
+            <ImagePreview src={imageURL} />
             <InputText>Image Text</InputText>
             <Input
               type="text"
@@ -249,7 +223,7 @@ class AddArticle extends Component {
               value={imageText}
               onChange={this.handleInputChange}
             />
-            <InputText>Publication Link (Required)</InputText>
+            <InputText>Publication Link</InputText>
             <Input
               type="text"
               name="link"
@@ -257,7 +231,9 @@ class AddArticle extends Component {
               onChange={this.handleInputChange}
               required
             />
-            <InputText>Date Published (Required)</InputText>
+            <InputText>
+              Date Published (if none entered, will be todays date)
+            </InputText>
             <Input
               type="text"
               name="date"
@@ -265,7 +241,7 @@ class AddArticle extends Component {
               onChange={this.handleInputChange}
               required
             />
-            <InputText>Place Published (Required)</InputText>
+            <InputText>Place Published</InputText>
             <Input
               type="text"
               name="publisher"
@@ -273,21 +249,7 @@ class AddArticle extends Component {
               onChange={this.handleInputChange}
               required
             />
-            {/* <AddButton onClick={this.addPub}>add pub</AddButton> */}
 
-            {/* <Select
-              name="publisher"
-              value={publisher}
-              onChange={this.handleInputChange}
-            >
-              <Option value="select">Select...</Option>
-              <Option value="PhysicsWorld">PhysicsWorld</Option>
-              <Option value="RegMedNet">RegMedNet</Option>
-              <Option value="3DMedNet">3DMedNet</Option>
-              <Option value="Reliawire">Reliawire</Option>
-              <Option value="TheSignalMag">TheSignalMag</Option>
-            </Select> */}
-            {/* <Input type="text" name="publisher" value={publisher} onChange={this.handleInputChange} required/> */}
             <InputText>Content (Required)</InputText>
             <div
               className="text-editor"

@@ -78,7 +78,7 @@ class Home extends Component {
         confirmButtonColor: "#610707",
         cancelButtonColor: "rgba(109,108,108,0.9)",
         cancelButtonText: "NO!",
-        confirmButtonText: "Delete!",
+        confirmButtonText: "DELETE!",
         padding: "2.5rem"
       })
       .then(result => {

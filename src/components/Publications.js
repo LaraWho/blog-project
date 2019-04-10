@@ -28,12 +28,7 @@ const SubTitle = styled.h2`
 `;
 class Publications extends Component {
   componentDidMount() {
-    if (
-      this.props.allArticles === undefined ||
-      this.props.allArticles.length === 0
-    ) {
-      this.props.getAllArticles();
-    }
+    this.props.getAllArticles();
   }
 
   render() {

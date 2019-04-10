@@ -150,7 +150,7 @@ class AddArticle extends Component {
   };
 
   addArticle = () => {
-    const {
+    let {
       text,
       imageText,
       imageURL,
@@ -159,6 +159,12 @@ class AddArticle extends Component {
       date,
       publisher
     } = this.state;
+    if (imageURL === "") {
+      imageURL = undefined;
+    }
+    if (date === "") {
+      date = undefined;
+    }
     axios
       .post("/api/articles", {
         content: text,
@@ -182,6 +188,18 @@ class AddArticle extends Component {
         console.log(err);
       });
   };
+
+  // addPub = () => {
+  //   const { publisher } = this.state;
+  //   axios
+  //     .post("/api/articles/publisher", { publisher })
+  //     .then(res => {
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // };
 
   saveEdit = (_id, article) => {
     this.props.saveEdit(_id, article);
@@ -248,7 +266,16 @@ class AddArticle extends Component {
               required
             />
             <InputText>Place Published (Required)</InputText>
-            <Select
+            <Input
+              type="text"
+              name="publisher"
+              value={publisher}
+              onChange={this.handleInputChange}
+              required
+            />
+            {/* <AddButton onClick={this.addPub}>add pub</AddButton> */}
+
+            {/* <Select
               name="publisher"
               value={publisher}
               onChange={this.handleInputChange}
@@ -259,7 +286,7 @@ class AddArticle extends Component {
               <Option value="3DMedNet">3DMedNet</Option>
               <Option value="Reliawire">Reliawire</Option>
               <Option value="TheSignalMag">TheSignalMag</Option>
-            </Select>
+            </Select> */}
             {/* <Input type="text" name="publisher" value={publisher} onChange={this.handleInputChange} required/> */}
             <InputText>Content (Required)</InputText>
             <div

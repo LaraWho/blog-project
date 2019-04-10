@@ -21,16 +21,15 @@ const ArticleSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now,
-    required: true
+    default: Date.now
   },
   link: {
     type: String,
     required: true
   },
   publisher: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   }
 });
 

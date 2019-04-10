@@ -53,10 +53,49 @@ const ArticleLink = styled(ArticleSubTitle)`
   cursor: pointer;
   font-size: 1.5em;
 `;
+
+const DeleteAndEdit = styled.button`
+  cursor: pointer;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.5em;
+  width: unset;
+  width: 350px;
+  padding: 5px;
+  font-weight: 400;
+  background-color: rgba(109, 108, 108, 0.9);
+  border-color: #545454;
+  border-style: solid;
+  border-width: 2px 2px 0.5px 2px;
+  color: #fff;
+  transition: all 0.5s ease;
+  :nth-of-type(2) {
+    border-width: 0.5px 2px 2px 2px;
+    color: #610707;
+  }
+  :hover {
+    opacity: 0.5;
+  }
+`;
+
+const ButtonBox = styled.div`
+  margin-top: 1.5em;
+  padding: 0.25em;
+  background-color: #545454;
+  @media (max-width: 746px) {
+    margin-top: 1em;
+    width: min-content;
+  }
+`;
 class SingleArticle extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
   }
+
+  edit = article => {
+    this.props.history.push("/add");
+    this.props.editing(article);
+  };
 
   render() {
     const { id } = this.props.match.params;
@@ -64,13 +103,27 @@ class SingleArticle extends Component {
       return matchingArticle._id === id;
     });
 
+    console.log(this.props);
     return (
       <SingleArticleWrapper>
+        {this.props.token === "" ? null : (
+          <ButtonBox>
+            <DeleteAndEdit onClick={() => this.edit(article)}>
+              Edit
+            </DeleteAndEdit>
+            <DeleteAndEdit onClick={() => this.props.deleteOne(article._id)}>
+              Delete
+            </DeleteAndEdit>
+          </ButtonBox>
+        )}
+
         <ArticleHeader>{article.title}</ArticleHeader>
         <ArticleImage src={article.imageURL} />
         <ImageText>{article.imageText}</ImageText>
         <ArticleLink as="a" href={article.link} target="_blank">
-          Link to published article at {article.publisher}
+          {article.link === ""
+            ? null
+            : `Link to published article at ${article.publisher}`}
         </ArticleLink>
         <ArticleSubTitle>
           Published {moment(article.date).format("Do MMMM YYYY")}

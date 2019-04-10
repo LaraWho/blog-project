@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { withState } from "./MyState";
 import { Switch, Route, withRouter } from "react-router-dom";
+import axios from "axios";
+import sweetie from "sweetalert2";
 import Nav from "./components/Nav";
 import About from "./components/About";
 import Home from "./components/Home";
@@ -102,6 +104,28 @@ class App extends Component {
     window.scrollTo(0, 0);
   };
 
+  deleteOne = id => {
+    sweetie
+      .fire({
+        title: "Are you sure?! Are you sure?!",
+        text:
+          "Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?!",
+        showCancelButton: true,
+        confirmButtonColor: "#610707",
+        cancelButtonColor: "rgba(109,108,108,0.9)",
+        cancelButtonText: "NO!",
+        confirmButtonText: "DELETE!",
+        padding: "2.5rem"
+      })
+      .then(result => {
+        if (result.value) {
+          axios.delete(`/api/articles/${id}`).then(res => {
+            this.props.history.push("/articles");
+          });
+        }
+      });
+  };
+
   render() {
     return (
       <AppWrapper>
@@ -115,7 +139,12 @@ class App extends Component {
           <Route path="/add" component={AddArticle} />
           <Route path="/publications" component={Publications} />
           <Route path="/articles" render={props => <ArticleHub {...props} />} />
-          <Route path="/:id" component={SingleArticle} />
+          <Route
+            path="/:id"
+            render={props => (
+              <SingleArticle {...props} deleteOne={this.deleteOne} />
+            )}
+          />
         </Switch>
         <FooterWrapper>
           <Footer as="a" href="http://lara-potjewyd.surge.sh/" target="_blank">

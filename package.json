@@ -1,8 +1,8 @@
 {
   "name": "blog-project",
   "version": "0.1.0",
-  "main": "/server.js",
-  "proxy": "http://localhost:3456",
+  "main": "server.js",
+  "proxy": "http://localhost:9284",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
@@ -28,8 +28,10 @@
   "scripts": {
     "heroku-postbuild": "npm install --only=dev && npm install && npm run build",
     "start": "node server.js",
+    "react-start": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"

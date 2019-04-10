@@ -59,7 +59,7 @@ class Home extends Component {
       homeArticles: []
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     window.scrollTo(0, 0);
     this.articlesForHomePage();
     this.props.getAllArticles();

@@ -19,7 +19,7 @@ class ArticleHub extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     window.scrollTo(0, 0);
     this.getSomeArticles();
     this.props.getAllArticles();

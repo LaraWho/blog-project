@@ -42,7 +42,6 @@ const CV = () => {
   `;
   const Link = styled.a`
     color: #6d6c6c;
-    text-decoration: none;
     transition: all 0.5s ease;
     font-family: "Open Sans", sans-serif;
     :hover {

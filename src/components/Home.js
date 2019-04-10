@@ -3,6 +3,7 @@ import styled from "styled-components";
 import brain from "../brain3.svg";
 import ArticleList from "./ArticleList";
 import axios from "axios";
+import sweetie from "sweetalert2";
 import { withState } from "../MyState";
 
 const HomeWrapper = styled.div`
@@ -68,16 +69,32 @@ class Home extends Component {
     const toKeep = this.state.homeArticles.filter(article => {
       return article._id !== id;
     });
-    axios.delete(`/api/articles/${id}`).then(res => {
-      this.setState(
-        {
-          homeArticles: toKeep
-        },
-        () => {
-          this.articlesForHomePage();
+    sweetie
+      .fire({
+        title: "Are you sure?! Are you sure?!",
+        text:
+          "Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?!",
+        showCancelButton: true,
+        confirmButtonColor: "#610707",
+        cancelButtonColor: "rgba(109,108,108,0.9)",
+        cancelButtonText: "NO!",
+        confirmButtonText: "Delete!",
+        padding: "2.5rem"
+      })
+      .then(result => {
+        if (result.value) {
+          axios.delete(`/api/articles/${id}`).then(res => {
+            this.setState(
+              {
+                homeArticles: toKeep
+              },
+              () => {
+                this.articlesForHomePage();
+              }
+            );
+          });
         }
-      );
-    });
+      });
   };
 
   articlesForHomePage = () => {

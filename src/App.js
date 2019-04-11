@@ -72,9 +72,6 @@ const GlobalScope = createGlobalStyle`
     @media (min-width: 600px) {
       width: 60vw;
     }
-    button {
-      border-radius: 20px 0 20px 0;
-    }
   }
 `;
 const AppWrapper = styled.div`

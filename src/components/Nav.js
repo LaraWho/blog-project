@@ -39,7 +39,6 @@ const Header = styled.h1`
     opacity: 0.5;
   }
   @media (max-width: 620px) {
-    width: 100vw;
     margin-left: 1em;
   }
 `;

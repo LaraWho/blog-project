@@ -30,7 +30,11 @@ const AddButton = styled.h2`
 `;
 const BackButton = styled(AddButton)`
   color: #610707;
+  background-color: rgba(109, 108, 108, 0.9);
   margin: 1em auto;
+  border: 2px solid rgb(84, 84, 84);
+  border-radius: 20px 0 20px 0;
+  text-align: center;
 `;
 const InputText = styled.h2`
   text-align: left;
@@ -225,9 +229,6 @@ class AddArticle extends Component {
       <Editor>
         {this.props.token !== "" ? (
           <Editor>
-            <BackButton onClick={() => this.undoEdit()}>
-              Clear the fields like a pissed perv in the park!
-            </BackButton>
             <InputText>Title (Required)</InputText>
             <Input
               type="text"
@@ -309,6 +310,9 @@ class AddArticle extends Component {
             >
               save
             </AddButton>
+            <BackButton onClick={() => this.undoEdit()}>
+              Clear the fields like a pissed perv in the park!
+            </BackButton>
           </Editor>
         ) : (
           <Editor>

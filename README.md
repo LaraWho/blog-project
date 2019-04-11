@@ -41,3 +41,9 @@ My brother asked me for a portfolio site which he could handle the uploading and
 <br>
 
 ![edit](https://user-images.githubusercontent.com/29001520/55992998-301d6680-5c6b-11e9-9de9-4f4b440cf71a.png)
+
+# Article view when logged in
+
+<br>
+
+<img width="1060" alt="articles2" src="https://user-images.githubusercontent.com/29001520/55993504-8343e900-5c6c-11e9-9784-59aea3b62eee.png">

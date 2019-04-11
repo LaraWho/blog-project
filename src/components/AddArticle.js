@@ -30,11 +30,9 @@ const AddButton = styled.h2`
 `;
 const BackButton = styled(AddButton)`
   color: #610707;
-  background-color: rgba(109, 108, 108, 0.9);
+  background-color: rgba(109, 108, 108, 0.6);
   margin: 1em auto;
   border: 2px solid rgb(84, 84, 84);
-  border-radius: 20px 0 20px 0;
-  text-align: center;
 `;
 const InputText = styled.h2`
   text-align: left;

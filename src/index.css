@@ -58,3 +58,9 @@ li > a:focus {
   border-radius: 10px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 580px) {
+  .text-editor {
+    width: 80vw !important;
+  }
+}

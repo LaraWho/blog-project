@@ -28,6 +28,10 @@ const AddButton = styled.h2`
     width: 60vw;
   }
 `;
+const BackButton = styled(AddButton)`
+  color: red;
+  margin: 1em auto;
+`;
 const InputText = styled.h2`
   text-align: left;
   width: 80vw;
@@ -185,6 +189,27 @@ class AddArticle extends Component {
     }, 1500);
   };
 
+  undoEdit = () => {
+    sweetie
+      .fire({
+        title: "Would you really like to abandon this form?",
+        text:
+          "Nothing will be saved and you'll go back to the page you came from",
+        showCancelButton: true,
+        confirmButtonColor: "#610707",
+        cancelButtonColor: "rgba(109,108,108,0.9)",
+        cancelButtonText: "NO!",
+        confirmButtonText: "CLEAR IT!",
+        padding: "2.5rem"
+      })
+      .then(result => {
+        if (result.value) {
+          this.props.removeEdit();
+          this.props.history.goBack();
+        }
+      });
+  };
+
   render() {
     const { _id, content: editContent } = this.props.articleToEdit;
     const {
@@ -200,6 +225,9 @@ class AddArticle extends Component {
       <Editor>
         {this.props.token !== "" ? (
           <Editor>
+            <BackButton onClick={() => this.undoEdit()}>
+              Clear the fields like a pissed perv in the park!
+            </BackButton>
             <InputText>Title (Required)</InputText>
             <Input
               type="text"

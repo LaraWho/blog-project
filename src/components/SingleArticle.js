@@ -20,7 +20,7 @@ const ArticleHeader = styled.h1`
     font-size: 3em;
   }
 `;
-const ArticleImage = styled.im`
+const ArticleImage = styled.img`
   width: 100vw;
   margin: 1em;
   @media (min-width: 600px) {

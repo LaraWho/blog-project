@@ -29,7 +29,7 @@ const AddButton = styled.h2`
   }
 `;
 const BackButton = styled(AddButton)`
-  color: red;
+  color: #610707;
   margin: 1em auto;
 `;
 const InputText = styled.h2`

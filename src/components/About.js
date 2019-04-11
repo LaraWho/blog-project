@@ -31,7 +31,7 @@ const About = () => {
         <strong>What my family thinks I do:</strong> I don’t understand but
         you’re doing great! <br />
         <strong>What I think I do:</strong> Recreating the blood vessels of the
-        brain to research dementia and science writing.
+        brain to research dementia, and science writing.
       </Text>
       <Text>
         My name is Geoff; I am a PhD student at the University of Manchester

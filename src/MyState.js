@@ -14,6 +14,9 @@ class MyState extends Component {
       articleToEdit: []
     };
   }
+  componentDidMount() {
+    this.getAllArticles();
+  }
 
   getAllArticles = () => {
     axios

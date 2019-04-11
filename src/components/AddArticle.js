@@ -280,7 +280,7 @@ class AddArticle extends Component {
             <InputText>Content (Required)</InputText>
             <div
               className="text-editor"
-              style={{ width: "80vw", margin: "1em auto" }}
+              style={{ width: "60vw", margin: "1em auto" }}
             >
               <ReactQuill
                 theme="snow"

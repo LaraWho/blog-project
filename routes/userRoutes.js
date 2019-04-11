@@ -1,7 +1,7 @@
 const express = require("express");
 const userRoutes = express.Router();
-const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+const User = require("../models/user");
 
 userRoutes.post("/register", (req, res, next) => {
   User.findOne({ username: req.body.username }, (err, existingUser) => {

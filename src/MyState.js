@@ -102,7 +102,6 @@ class MyState extends Component {
   render() {
     const props = {
       getAllArticles: this.getAllArticles,
-      deleteArticle: this.deleteArticle,
       saveEdit: this.saveEdit,
       editing: this.editing,
       removeEdit: this.removeEdit,

@@ -13,8 +13,7 @@ const SingleArticleWrapper = styled.div`
 const ArticleHeader = styled.h1`
   font-size: 2.5em;
   margin: 0;
-  padding: 1em;
-  padding-bottom: 0;
+  padding: 0;
   width: 80vw;
   @media (min-width: 600px) {
     font-size: 3em;
@@ -52,6 +51,17 @@ const ArticleLink = styled(ArticleSubTitle)`
   font-family: "Muli", sans-serif;
   cursor: pointer;
   font-size: 1.5em;
+`;
+
+const BackButton = styled(ArticleLink)`
+  margin: 0.5em auto;
+  font-size: 2em;
+  margin: 0;
+  margin-top: 0.5em;
+  transition: opacity 0.5s ease;
+  :hover {
+    opacity: 0.6;
+  }
 `;
 
 const DeleteAndEdit = styled.button`
@@ -119,7 +129,9 @@ class SingleArticle extends Component {
             </DeleteAndEdit>
           </ButtonBox>
         )}
-
+        <BackButton onClick={() => this.props.history.goBack()}>
+          <i class="fas fa-caret-left" />
+        </BackButton>
         <ArticleHeader>{matchingArticle.title}</ArticleHeader>
         <ArticleImage src={matchingArticle.imageURL} />
         <ImageText>{matchingArticle.imageText}</ImageText>

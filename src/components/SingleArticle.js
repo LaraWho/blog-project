@@ -88,7 +88,7 @@ const ButtonBox = styled.div`
   }
 `;
 class SingleArticle extends Component {
-  componentDidMount() {
+  componentWillMount() {
     window.scrollTo(0, 0);
   }
 
@@ -99,36 +99,40 @@ class SingleArticle extends Component {
 
   render() {
     const { id } = this.props.match.params;
-    const article = this.props.allArticles.find(matchingArticle => {
-      return matchingArticle._id === id;
-    });
+    let matchingArticle = [];
+    this.props.allArticles.length !== 0 &&
+      (matchingArticle = this.props.allArticles.find(matchingArticle => {
+        return matchingArticle._id === id;
+      }));
 
-    console.log(this.props);
     return (
       <SingleArticleWrapper>
-        {this.props.token === "" ? null : (
+        {this.props.token && (
           <ButtonBox>
-            <DeleteAndEdit onClick={() => this.edit(article)}>
+            <DeleteAndEdit onClick={() => this.edit(matchingArticle)}>
               Edit
             </DeleteAndEdit>
-            <DeleteAndEdit onClick={() => this.props.deleteOne(article._id)}>
+            <DeleteAndEdit
+              onClick={() => this.props.deleteOne(matchingArticle._id)}
+            >
               Delete
             </DeleteAndEdit>
           </ButtonBox>
         )}
 
-        <ArticleHeader>{article.title}</ArticleHeader>
-        <ArticleImage src={article.imageURL} />
-        <ImageText>{article.imageText}</ImageText>
-        <ArticleLink as="a" href={article.link} target="_blank">
-          {article.link === ""
-            ? null
-            : `Link to published article at ${article.publisher}`}
+        <ArticleHeader>{matchingArticle.title}</ArticleHeader>
+        <ArticleImage src={matchingArticle.imageURL} />
+        <ImageText>{matchingArticle.imageText}</ImageText>
+        <ArticleLink as="a" href={matchingArticle.link} target="_blank">
+          {matchingArticle.link &&
+            `Link to published article at ${matchingArticle.publisher}`}
         </ArticleLink>
         <ArticleSubTitle>
-          Published {moment(article.date).format("Do MMMM YYYY")}
+          Published {moment(matchingArticle.date).format("Do MMMM YYYY")}
         </ArticleSubTitle>
-        <ArticleContent>{parse(article.content)}</ArticleContent>
+        <ArticleContent>
+          {matchingArticle.content && parse(matchingArticle.content)}
+        </ArticleContent>
       </SingleArticleWrapper>
     );
   }

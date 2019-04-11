@@ -15,11 +15,6 @@ const Wrapper = styled.div`
   @media (max-width: 800px) {
     overflow-y: hidden;
   }
-  .fa-flask::before {
-    @media (max-width: 400px) {
-      display: none;
-    }
-  }
 `;
 
 const DropDown = styled(Wrapper)`
@@ -43,9 +38,9 @@ const Header = styled.h1`
   :hover {
     opacity: 0.5;
   }
-
-  @media (max-width: 400px) {
-    text-align: right;
+  @media (max-width: 620px) {
+    width: 100vw;
+    margin-left: 1em;
   }
 `;
 

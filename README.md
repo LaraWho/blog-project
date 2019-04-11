@@ -47,3 +47,9 @@ My brother asked me for a portfolio site which he could handle the uploading and
 <br>
 
 <img width="1060" alt="articles2" src="https://user-images.githubusercontent.com/29001520/55993504-8343e900-5c6c-11e9-9784-59aea3b62eee.png">
+
+# Open dropdown menu in mobile/tablet view
+
+<br>
+
+<img width="649" alt="open navbar" src="https://user-images.githubusercontent.com/29001520/55993826-475d5380-5c6d-11e9-922a-1b0a79c5e8f5.png">

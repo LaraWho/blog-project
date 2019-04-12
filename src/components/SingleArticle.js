@@ -55,11 +55,17 @@ const ImageText = styled.p`
   :nth-last-of-type() {
     margin-bottom: 2em;
   }
+  @media (min-width: 1000px) {
+    max-width: 55vw;
+  }
 `;
 const ArticleLink = styled(ArticleSubTitle)`
   font-family: "Muli", sans-serif;
   cursor: pointer;
   font-size: 1.5em;
+  @media (min-width: 1000px) {
+    max-width: 55vw;
+  }
 `;
 
 const BackButton = styled(ArticleLink)`

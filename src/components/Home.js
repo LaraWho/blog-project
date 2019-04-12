@@ -72,7 +72,7 @@ class Home extends Component {
         </SubTitle>
 
         <ArticleList history={this.props.history} homeDisplay={true} />
-        <NextButton onClick={() => this.props.history.push("/articles/2")}>
+        <NextButton onClick={() => this.props.history.push("/articles")}>
           See More Articles
         </NextButton>
       </HomeWrapper>

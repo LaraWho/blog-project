@@ -20,6 +20,7 @@ const ArticleHeader = styled.h1`
   }
   @media (min-width: 1000px) {
     max-width: 55vw;
+    padding: 1em 0;
   }
 `;
 const ArticleImage = styled.img`

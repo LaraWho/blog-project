@@ -9,6 +9,10 @@ const About = () => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media (min-width: 900px) {
+      max-width: 55vw;
+      padding: 1em 0;
+    }
   `;
   const Text = styled.p``;
   const AboutTitle = styled.h1`

@@ -10,6 +10,9 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center; */
   padding: ${props => props.padding || "0"};
+  @media (min-width: 900px) {
+    max-width: 70vw;
+  }
 `;
 const ContentWrapper = styled(Wrapper)`
   padding: 1em 0;

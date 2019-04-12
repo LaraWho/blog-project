@@ -5,6 +5,9 @@ const CV = () => {
   const CVWrapper = styled.div`
     width: 80vw;
     margin: 1em auto 2em auto;
+    @media (min-width: 900px) {
+      max-width: 65vw;
+    }
   `;
   const CVTitle = styled.h1`
     font-size: 3.5em;

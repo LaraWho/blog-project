@@ -47,6 +47,9 @@ const InputText = styled.h2`
       margin-top: 2em;
     }
   }
+  .warning {
+    color: red;
+  }
 `;
 
 const ImagePreview = styled.img`
@@ -55,7 +58,6 @@ const ImagePreview = styled.img`
 
 const Toast = sweetie.mixin({
   toast: true,
-  position: "bottom-right",
   showConfirmButton: false,
   timer: 2000
 });
@@ -169,6 +171,7 @@ class AddArticle extends Component {
         this.props.getAllArticles();
         Toast.fire({
           type: "success",
+          position: "bottom-right",
           title: "Saved!"
         });
         setTimeout(() => {
@@ -177,6 +180,11 @@ class AddArticle extends Component {
       })
       .catch(err => {
         console.log(err);
+        Toast.fire({
+          type: "error",
+          position: "center",
+          title: "Enter Title and Content!"
+        });
       });
   };
 
@@ -184,6 +192,7 @@ class AddArticle extends Component {
     this.props.saveEdit(_id, article);
     Toast.fire({
       type: "success",
+      position: "bottom-right",
       title: "Saved!"
     });
     setTimeout(() => {
@@ -227,7 +236,7 @@ class AddArticle extends Component {
       <Editor>
         {this.props.token !== "" ? (
           <Editor>
-            <InputText>Title (Required)</InputText>
+            <InputText className="toWarn">Title (Required)</InputText>
             <Input
               type="text"
               name="title"
@@ -277,7 +286,7 @@ class AddArticle extends Component {
               required
             />
 
-            <InputText>Content (Required)</InputText>
+            <InputText className="toWarn">Content (Required)</InputText>
             <div
               className="text-editor"
               style={{ width: "60vw", margin: "1em auto" }}

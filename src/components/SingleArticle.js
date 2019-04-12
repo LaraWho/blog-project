@@ -18,6 +18,9 @@ const ArticleHeader = styled.h1`
   @media (min-width: 600px) {
     font-size: 3em;
   }
+  @media (min-width: 1000px) {
+    max-width: 55vw;
+  }
 `;
 const ArticleImage = styled.img`
   width: 100vw;
@@ -32,12 +35,18 @@ const ArticleImage = styled.img`
 const ArticleContent = styled.div`
   width: 80vw;
   text-align: left;
+  @media (min-width: 1000px) {
+    max-width: 55vw;
+  }
 `;
 const ArticleSubTitle = styled.h2`
   width: 80vw;
   margin: 0.5em 0;
   text-align: left;
   font-size: 1.25em;
+  @media (min-width: 1000px) {
+    max-width: 55vw;
+  }
 `;
 const ImageText = styled.p`
   text-align: left;
@@ -86,6 +95,9 @@ const DeleteAndEdit = styled.button`
   :hover {
     opacity: 0.5;
   }
+  @media (min-width: 1000px) {
+    max-width: 55vw;
+  }
 `;
 
 const ButtonBox = styled.div`
@@ -130,7 +142,7 @@ class SingleArticle extends Component {
           </ButtonBox>
         )}
         <BackButton onClick={() => this.props.history.goBack()}>
-          <i class="fas fa-caret-left" />
+          <i className="fas fa-caret-left" />
         </BackButton>
         <ArticleHeader>{matchingArticle.title}</ArticleHeader>
         <ArticleImage src={matchingArticle.imageURL} />

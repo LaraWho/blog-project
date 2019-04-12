@@ -11,12 +11,62 @@ class MyState extends Component {
       user: JSON.parse(localStorage.getItem("user")) || {},
       token: localStorage.token || "",
       isEditing: false,
-      articleToEdit: []
+      articleToEdit: [],
+      articlesToLimit: [],
+      pageCount: 0
     };
   }
   componentDidMount() {
     this.getAllArticles();
+    this.getSomeArticles();
   }
+
+  getSomeArticles = page => {
+    axios
+      .get(`/api/articles/some/${page}`)
+      .then(res => {
+        this.setState({
+          articlesToLimit: res.data.docs,
+          pageCount: res.data.pages
+          // pageCount: Math.ceil(res.data.total / res.data.limit)
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  deleteArticle = id => {
+    const toKeep = this.state.articlesToLimit.filter(article => {
+      return article._id !== id;
+    });
+    sweetie
+      .fire({
+        title: "Are you sure?! Are you sure?!",
+        text:
+          "Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?!",
+        showCancelButton: true,
+        confirmButtonColor: "#610707",
+        cancelButtonColor: "rgba(109,108,108,0.9)",
+        cancelButtonText: "NO!",
+        confirmButtonText: "DELETE!",
+        padding: "2.5rem"
+      })
+      .then(result => {
+        if (result.value) {
+          axios.delete(`/api/articles/${id}`).then(res => {
+            this.setState(
+              {
+                articlesToLimit: toKeep
+              },
+              () => {
+                this.getSomeArticles();
+              }
+            );
+          });
+        }
+      });
+  };
 
   getAllArticles = () => {
     axios
@@ -102,6 +152,8 @@ class MyState extends Component {
   render() {
     const props = {
       getAllArticles: this.getAllArticles,
+      getSomeArticles: this.getSomeArticles,
+      deleteArticle: this.deleteArticle,
       saveEdit: this.saveEdit,
       editing: this.editing,
       removeEdit: this.removeEdit,

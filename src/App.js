@@ -34,12 +34,13 @@ const GlobalScope = createGlobalStyle`
     color: #6d6c6c;
   }
   p {
-    line-height: 1.25em;
+    line-height: 1.75em;
     font-family: 'Open Sans', sans-serif;
   }
   a {
     text-decoration: underline;
     color: #6d6c6c;
+    line-height: 1.75em;
     font-family: 'Muli', sans-serif;
     font-weight: 600;
     text-align: left;

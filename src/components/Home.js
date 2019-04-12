@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import brain from "../brain3.svg";
 import ArticleList from "./ArticleList";
-import axios from "axios";
-import sweetie from "sweetalert2";
 import { withState } from "../MyState";
 
 const HomeWrapper = styled.div`
@@ -19,10 +17,10 @@ const Brain = styled.img`
     margin-top: 4em;
   }
   @media (min-width: 600px) {
-    width: 35vw;
-  }
-  @media (min-width: 980px) {
     width: 30vw;
+  }
+  @media (min-width: 1000px) {
+    width: 20vw;
   }
 `;
 const Title = styled.h1`
@@ -44,7 +42,7 @@ const SubTitle = styled.h2.attrs(({ size, color, margin }) => ({
       font-size: 2.5em;
     } */
 `;
-const LoginBtn = styled.h2`
+const NextButton = styled.h2`
   cursor: pointer;
   bottom: 5px;
   transition: all 0.5s ease;
@@ -53,57 +51,11 @@ const LoginBtn = styled.h2`
   }
 `;
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      homeArticles: []
-    };
-  }
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.articlesForHomePage();
+    this.props.getSomeArticles();
     this.props.getAllArticles();
   }
-
-  deleteArticle = id => {
-    const toKeep = this.state.homeArticles.filter(article => {
-      return article._id !== id;
-    });
-    sweetie
-      .fire({
-        title: "Are you sure?! Are you sure?!",
-        text:
-          "Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?!",
-        showCancelButton: true,
-        confirmButtonColor: "#610707",
-        cancelButtonColor: "rgba(109,108,108,0.9)",
-        cancelButtonText: "NO!",
-        confirmButtonText: "DELETE!",
-        padding: "2.5rem"
-      })
-      .then(result => {
-        if (result.value) {
-          axios.delete(`/api/articles/${id}`).then(res => {
-            this.setState(
-              {
-                homeArticles: toKeep
-              },
-              () => {
-                this.articlesForHomePage();
-              }
-            );
-          });
-        }
-      });
-  };
-
-  articlesForHomePage = () => {
-    axios.get("/api/articles/some").then(res => {
-      this.setState({
-        homeArticles: res.data
-      });
-    });
-  };
 
   render() {
     return (
@@ -119,16 +71,10 @@ class Home extends Component {
           Writer
         </SubTitle>
 
-        <ArticleList
-          history={this.props.history}
-          homeDisplay={true}
-          homeArticles={this.state.homeArticles}
-          deleteArticle={this.deleteArticle}
-        />
-
-        <LoginBtn onClick={() => this.props.history.push("/login")}>
-          If you're Geoffrey, click here!
-        </LoginBtn>
+        <ArticleList history={this.props.history} homeDisplay={true} />
+        <NextButton onClick={() => this.props.history.push("/articles/2")}>
+          See More Articles
+        </NextButton>
       </HomeWrapper>
     );
   }

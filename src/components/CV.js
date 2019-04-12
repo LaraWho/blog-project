@@ -28,6 +28,7 @@ const CV = () => {
   const BodyText = styled.p`
     color: #585858;
     text-align: left;
+
     :nth-of-type(1) {
       text-align: center;
       margin-bottom: 2em;
@@ -39,6 +40,7 @@ const CV = () => {
   `;
   const ListItem = styled.li`
     list-style-type: circle;
+    line-height: 1.85em;
   `;
   const Link = styled.a`
     color: #6d6c6c;
@@ -231,13 +233,14 @@ const CV = () => {
       </BodyText>
       <BodyText>
         <strong>
-          <br />
           Manchester Museum Body Experience Dementia Scientist (2017)
         </strong>
+        <br />
         Teaching families about Alzheimer’s disease & dementia; Lego neurons
       </BodyText>
       <BodyText>
-        <strong>Manchester Museum Stem Cell Scientist (2017)</strong>
+        <strong>Manchester Museum Stem Cell Scientist (2017) </strong>
+        <br />
         Teaching college students about stem cells & their applications in
         research.
       </BodyText>

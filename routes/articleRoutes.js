@@ -46,20 +46,20 @@ articleRoutes
     });
   });
 
-articleRoutes
-  .route("/some")
+// articleRoutes
+//   .route("/some")
 
-  .get((req, res) => {
-    Article.find((err, articles) => {
-      if (err) return res.status(500).send(err);
-      return res.status(200).send(articles);
-    })
-      .sort({ date: -1 })
-      .limit(6);
-  });
+//   .get((req, res) => {
+//     Article.find((err, articles) => {
+//       if (err) return res.status(500).send(err);
+//       return res.status(200).send(articles);
+//     })
+//       .sort({ date: -1 })
+//       .limit(6);
+//   });
 
 articleRoutes
-  .route("/some/:page")
+  .route("/:page")
 
   .get((req, res) => {
     const options = {

@@ -23,7 +23,7 @@ class MyState extends Component {
 
   getSomeArticles = page => {
     axios
-      .get(`/api/articles/some/${page}`)
+      .get(`/api/articles/${page}`)
       .then(res => {
         this.setState({
           articlesToLimit: res.data.docs,

@@ -3,6 +3,7 @@ import ArticleList from "./ArticleList";
 import styled from "styled-components";
 import { withState } from "../MyState";
 import ReactPaginate from "react-paginate";
+import { Route } from "react-router-dom";
 
 const HubWrapper = styled.div`
   width: 100vw;
@@ -37,7 +38,16 @@ class ArticleHub extends Component {
   render() {
     return (
       <HubWrapper>
-        <ArticleList history={this.props.history} hubDisplay={true} />
+        <Route
+          path="/articles"
+          render={props => (
+            <ArticleList
+              history={this.props.history}
+              hubDisplay={true}
+              {...props}
+            />
+          )}
+        />
         <ReactPaginate
           previousLabel={""}
           nextLabel={""}

@@ -15,6 +15,7 @@ const Thumbnail = styled.div`
   height: fill-available;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 `;
 const ArticleHeader = styled.h2`
   display: flex;

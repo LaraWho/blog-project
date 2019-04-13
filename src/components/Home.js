@@ -62,10 +62,10 @@ class Home extends Component {
       <HomeWrapper>
         <Brain src={brain} alt="brain" />
         <Title>Geoffrey Potjewyd</Title>
-        <SubTitle color="#4e4b4b" margin="1em auto">
+        {/* <SubTitle color="#4e4b4b" margin="1em auto">
           {" "}
-          Neuroscience - Tissue Engineering
-        </SubTitle>
+          Regenerative Medicine PhD - Neuroscientist - Tissue Engineer - Science Writer
+        </SubTitle> */}
         <SubTitle size="1.5em">
           Regenerative Medicine PhD - Neuroscientist - Tissue Engineer - Science
           Writer

@@ -5,21 +5,27 @@ import { withState } from "../MyState";
 const Article = styled.div`
   cursor: pointer;
   margin: 10px;
+  height: 400px;
   display: flex;
   align-items: center;
   flex-direction: column;
 `;
-const Thumbnail = styled.img`
+const Thumbnail = styled.div`
   width: 350px;
-  position: relative;
+  height: fill-available;
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 const ArticleHeader = styled.h2`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(109, 108, 108, 0.9);
   color: #fff;
   font-weight: 400;
   width: 350px;
   margin: 0;
-  padding: 5px;
+  padding: 0.5em;
   transition: all 0.5s ease;
   :hover {
     background-color: rgba(109, 108, 108, 0.6);
@@ -56,8 +62,7 @@ class ThumbnailComp extends Component {
               {this.props.article.title}
             </ArticleHeader>
             <Thumbnail
-              src={this.props.article.imageURL}
-              alt={this.props.article.title}
+              style={{ backgroundImage: `url(${this.props.article.imageURL})` }}
             />
             <DeleteAndEdit onClick={() => this.edit(this.props.article)}>
               Edit
@@ -76,8 +81,7 @@ class ThumbnailComp extends Component {
           >
             <ArticleHeader>{this.props.article.title}</ArticleHeader>
             <Thumbnail
-              src={this.props.article.imageURL}
-              alt={this.props.article.title}
+              style={{ backgroundImage: `url(${this.props.article.imageURL})` }}
             />
           </Article>
         )}

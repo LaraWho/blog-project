@@ -318,7 +318,7 @@ class AddArticle extends Component {
               save
             </AddButton>
             <BackButton onClick={() => this.undoEdit()}>
-              Clear the fields like a pissed perv in the park!
+              Clear all fields
             </BackButton>
           </Editor>
         ) : (

@@ -8,7 +8,10 @@ My brother asked me for a portfolio site which he could handle the uploading and
 # Home page
 
 <br>
-<img width="942" alt="home-user" src="https://user-images.githubusercontent.com/29001520/55992538-0dd71900-5c6a-11e9-99c2-1b595d5ec8f9.png">
+
+<img width="1147" alt="Homepage" src="https://user-images.githubusercontent.com/29001520/56080396-eabd7e00-5dbd-11e9-8128-f68bc27406f6.png">
+
+<img width="575" alt="small-screen-homepage" src="https://user-images.githubusercontent.com/29001520/56080394-e7c28d80-5dbd-11e9-833d-e297da15a58a.png">
 
 # Article view
 
@@ -18,12 +21,12 @@ My brother asked me for a portfolio site which he could handle the uploading and
 # Article page
 
 <br>
-<img width="1343" alt="articles" src="https://user-images.githubusercontent.com/29001520/55992959-12500180-5c6b-11e9-97fd-59f1ed7cfafe.png">
+<img width="1387" alt="user-view-articles-top" src="https://user-images.githubusercontent.com/29001520/56080411-0b85d380-5dbe-11e9-8bce-d2153aa6775e.png">
 
 # Pagination on article Page
 
 <br>
-<img width="1343" alt="pagination" src="https://user-images.githubusercontent.com/29001520/55992543-116aa000-5c6a-11e9-9082-24742f5c259e.png">
+<img width="1388" alt="pagination" src="https://user-images.githubusercontent.com/29001520/56080414-104a8780-5dbe-11e9-8d71-9b0a9dbd6614.png">
 
 # Login view for my brother
 
@@ -46,10 +49,28 @@ My brother asked me for a portfolio site which he could handle the uploading and
 
 <br>
 
-<img width="1060" alt="articles2" src="https://user-images.githubusercontent.com/29001520/55993504-8343e900-5c6c-11e9-9784-59aea3b62eee.png">
+<img width="1387" alt="user-view-articles-top" src="https://user-images.githubusercontent.com/29001520/56080420-28220b80-5dbe-11e9-90c9-87a7c7212b44.png">
 
 # Open dropdown menu in mobile/tablet view
 
 <br>
 
 <img width="649" alt="open navbar" src="https://user-images.githubusercontent.com/29001520/55993826-475d5380-5c6d-11e9-922a-1b0a79c5e8f5.png">
+
+# List of written work
+
+<br>
+
+<img width="729" alt="written-work" src="https://user-images.githubusercontent.com/29001520/56080428-4b4cbb00-5dbe-11e9-82ec-ef3fb71af518.png">
+
+# About page
+
+<br>
+
+<img width="874" alt="about" src="https://user-images.githubusercontent.com/29001520/56080430-4daf1500-5dbe-11e9-9164-f5b734ee6780.png">
+
+# CV
+
+<br>
+
+<img width="876" alt="cv" src="https://user-images.githubusercontent.com/29001520/56080431-4f78d880-5dbe-11e9-8c6e-d0405a32fd14.png">

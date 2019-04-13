@@ -4,7 +4,7 @@ import { withState } from "../MyState";
 
 const Article = styled.div`
   cursor: pointer;
-  margin: 10px;
+  margin: 1.2em 0.55em;
   height: 400px;
   display: flex;
   align-items: center;

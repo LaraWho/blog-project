@@ -49,7 +49,7 @@ My brother asked me for a portfolio site which he could handle the uploading and
 
 <br>
 
-<img width="1387" alt="user-view-articles-top" src="https://user-images.githubusercontent.com/29001520/56080420-28220b80-5dbe-11e9-90c9-87a7c7212b44.png">
+<img width="1326" alt="loggedin-view" src="https://user-images.githubusercontent.com/29001520/56080448-8ea72980-5dbe-11e9-9862-0e4f23165e00.png">
 
 # Open dropdown menu in mobile/tablet view
 
